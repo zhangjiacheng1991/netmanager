@@ -108,7 +108,7 @@
         <enum>QFrame::NoFrame</enum>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="widget_2">
         <property name="geometry">
@@ -195,20 +195,20 @@
         <widget class="QPushButton" name="pushButton_7">
          <property name="geometry">
           <rect>
-           <x>0</x>
+           <x>10</x>
            <y>20</y>
            <width>81</width>
            <height>27</height>
           </rect>
          </property>
          <property name="text">
-          <string>报警声音</string>
+          <string>报警</string>
          </property>
         </widget>
         <widget class="QPushButton" name="pushButton_8">
          <property name="geometry">
           <rect>
-           <x>0</x>
+           <x>10</x>
            <y>60</y>
            <width>81</width>
            <height>27</height>
@@ -221,7 +221,7 @@
         <widget class="QPushButton" name="pushButton_9">
          <property name="geometry">
           <rect>
-           <x>0</x>
+           <x>10</x>
            <y>100</y>
            <width>81</width>
            <height>27</height>
@@ -234,7 +234,7 @@
         <widget class="QPushButton" name="pushButton_10">
          <property name="geometry">
           <rect>
-           <x>0</x>
+           <x>10</x>
            <y>140</y>
            <width>81</width>
            <height>27</height>
@@ -416,7 +416,7 @@
   </action>
   <action name="actionSound">
    <property name="text">
-    <string>报警声音</string>
+    <string>报警</string>
    </property>
   </action>
   <action name="actionMsg">

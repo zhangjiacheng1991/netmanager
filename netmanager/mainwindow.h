@@ -6,6 +6,7 @@
 #include "netmanager.h"
 #include "setconfig.h"
 #include "report.h"
+#include "errrecord.h"
 namespace Ui {
 class MainWindow;
 }
@@ -37,12 +38,24 @@ private slots:
 
     void on_actionSound_triggered();
 
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::MainWindow *ui;
     netmanager* nManager;
     QWidget* newWidget;
     setConfig* sConfig;
     report*  rpt;
+    errRecord* eRecd;
+
 
 
 };
