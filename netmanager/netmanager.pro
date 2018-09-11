@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     netmanager.cpp \
     addnetgroup.cpp \
     errrecord.cpp \
-    emailreport.cpp
+    emailreport.cpp \
+    dialog_warnsound.cpp
 
 HEADERS  += mainwindow.h \
     netlist.h \
@@ -31,7 +32,8 @@ HEADERS  += mainwindow.h \
     netmanager.h \
     addnetgroup.h \
     errrecord.h \
-    emailreport.h
+    emailreport.h \
+    dialog_warnsound.h
 
 FORMS    += mainwindow.ui \
     netlist.ui \
@@ -41,4 +43,5 @@ FORMS    += mainwindow.ui \
     netmanager.ui \
     addnetgroup.ui \
     errrecord.ui \
-    emailreport.ui
+    emailreport.ui \
+    dialog_warnsound.ui

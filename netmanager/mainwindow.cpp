@@ -93,5 +93,5 @@ void MainWindow::on_actionGroup_2_triggered()
 
 void MainWindow::on_actionSound_triggered()
 {
-    //QMessageBox("sdfs")
+
 }

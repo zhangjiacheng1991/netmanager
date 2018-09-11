@@ -39,7 +39,7 @@
          </font>
         </property>
         <property name="text">
-         <string>网络列表</string>
+         <string>网站列表</string>
         </property>
        </widget>
       </item>
@@ -68,13 +68,13 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>120</width>
+        <width>140</width>
         <height>0</height>
        </size>
       </property>
       <property name="sizeIncrement">
        <size>
-        <width>120</width>
+        <width>150</width>
         <height>0</height>
        </size>
       </property>
@@ -84,39 +84,214 @@
         <height>0</height>
        </size>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QToolBox" name="toolBox">
        <property name="geometry">
         <rect>
-         <x>9</x>
-         <y>9</y>
-         <width>87</width>
-         <height>104</height>
+         <x>10</x>
+         <y>20</y>
+         <width>121</width>
+         <height>441</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QPushButton" name="BTN_netmanager">
-          <property name="text">
-           <string>网络管理</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="BTN_set">
-          <property name="text">
-           <string>参数设置</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="BTN_list">
-          <property name="text">
-           <string>报表</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="widget_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>121</width>
+          <height>348</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>网络管理</string>
+        </attribute>
+        <widget class="QPushButton" name="pushButton">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>81</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>添加网络</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>40</y>
+           <width>81</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>添加网络分类</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>80</y>
+           <width>81</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>网站列表</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>120</y>
+           <width>81</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>故障记录</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="page_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>121</width>
+          <height>348</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>设置</string>
+        </attribute>
+        <widget class="QPushButton" name="pushButton_7">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>20</y>
+           <width>81</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>报警声音</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_8">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>60</y>
+           <width>81</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>短信</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_9">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>100</y>
+           <width>81</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>企业微信</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_10">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>140</y>
+           <width>81</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>邮箱</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="page">
+        <attribute name="label">
+         <string>报表</string>
+        </attribute>
+        <widget class="QPushButton" name="pushButton_12">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>130</y>
+           <width>81</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>邮件发送报表</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_13">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>81</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>短信发送报表</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_14">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>80</y>
+           <width>81</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>群消息报表</string>
+         </property>
+        </widget>
+       </widget>
       </widget>
+      <zorder>toolBox</zorder>
+      <zorder>frame</zorder>
      </widget>
     </item>
     <item row="1" column="1">
