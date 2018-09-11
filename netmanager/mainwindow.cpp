@@ -1,0 +1,60 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    ui->label->setText("网络列表");
+    nManager = new netmanager(ui->frame);
+    nManager->nList->show();
+    newWidget = nManager->nList;
+    sConfig = new setConfig(ui->frame);
+    sConfig->hide();
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+//添加网络菜单槽函数
+void MainWindow::on_actionAdd_triggered()
+{
+    ui->label->setText("添加网络");
+    newWidget->hide();
+    nManager->nAdd->show();
+    newWidget = nManager->nAdd;
+}
+//添加网络列表菜单槽函数
+void MainWindow::on_actionList_triggered()
+{
+    ui->label->setText("网络列表");
+    newWidget->hide();
+    nManager->nList->show();
+    newWidget = nManager->nList;
+}
+
+void MainWindow::on_actionGroup_triggered()
+{
+    ui->label->setText("添加网站分类");
+    newWidget->hide();
+    nManager->addNgroup->show();
+    newWidget = nManager->addNgroup;
+}
+
+void MainWindow::on_action2Error_triggered()
+{
+    ui->label->setText("故障记录");
+    newWidget->hide();
+    nManager->errRecd->show();
+    newWidget = nManager->errRecd;
+}
+
+void MainWindow::on_action_2_triggered()
+{
+    ui->label->setText("参数设置");
+    newWidget->hide();
+    sConfig->show();
+    newWidget = sConfig;
+}
