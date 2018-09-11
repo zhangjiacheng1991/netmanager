@@ -5,6 +5,7 @@
 #include <QWidget>
 #include "netmanager.h"
 #include "setconfig.h"
+#include "report.h"
 namespace Ui {
 class MainWindow;
 }
@@ -28,11 +29,20 @@ private slots:
 
     void on_action_2_triggered();
 
+    void on_actionMeil_2_triggered();
+
+    void on_actionMsg_2_triggered();
+
+    void on_actionGroup_2_triggered();
+
+    void on_actionSound_triggered();
+
 private:
     Ui::MainWindow *ui;
     netmanager* nManager;
     QWidget* newWidget;
     setConfig* sConfig;
+    report*  rpt;
 
 
 };

@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
     newWidget = nManager->nList;
     sConfig = new setConfig(ui->frame);
     sConfig->hide();
+    rpt = new report(ui->frame);
+    rpt->hide();
 }
 
 MainWindow::~MainWindow()
@@ -57,4 +59,39 @@ void MainWindow::on_action_2_triggered()
     newWidget->hide();
     sConfig->show();
     newWidget = sConfig;
+}
+
+void MainWindow::on_actionMeil_2_triggered()
+{
+    ui->label->setText("报表");
+    newWidget->hide();
+    rpt->tabwidget->setCurrentIndex(0);
+    newWidget = rpt;
+    rpt->show();
+
+
+
+}
+
+void MainWindow::on_actionMsg_2_triggered()
+{
+    ui->label->setText("报表");
+    newWidget->hide();
+    rpt->tabwidget->setCurrentIndex(1);
+    newWidget = rpt;
+    rpt->show();
+}
+
+void MainWindow::on_actionGroup_2_triggered()
+{
+    ui->label->setText("报表");
+    newWidget->hide();
+    rpt->tabwidget->setCurrentIndex(2);
+    newWidget = rpt;
+    rpt->show();
+}
+
+void MainWindow::on_actionSound_triggered()
+{
+    //QMessageBox("sdfs")
 }

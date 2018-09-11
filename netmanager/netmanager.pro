@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     report.cpp \
     netmanager.cpp \
     addnetgroup.cpp \
-    errrecord.cpp
+    errrecord.cpp \
+    emailreport.cpp
 
 HEADERS  += mainwindow.h \
     netlist.h \
@@ -29,7 +30,8 @@ HEADERS  += mainwindow.h \
     report.h \
     netmanager.h \
     addnetgroup.h \
-    errrecord.h
+    errrecord.h \
+    emailreport.h
 
 FORMS    += mainwindow.ui \
     netlist.ui \
@@ -38,4 +40,5 @@ FORMS    += mainwindow.ui \
     report.ui \
     netmanager.ui \
     addnetgroup.ui \
-    errrecord.ui
+    errrecord.ui \
+    emailreport.ui
