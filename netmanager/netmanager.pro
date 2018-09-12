@@ -26,7 +26,10 @@ SOURCES += main.cpp\
     emailset.cpp \
     setmsgcount.cpp \
     setemailcount.cpp \
-    setwechatcount.cpp
+    setwechatcount.cpp \
+    reportemailrecord.cpp \
+    reportmsgrecord.cpp \
+    reportwechatrecord.cpp
 
 HEADERS  += mainwindow.h \
     netlist.h \
@@ -41,7 +44,10 @@ HEADERS  += mainwindow.h \
     emailset.h \
     setmsgcount.h \
     setemailcount.h \
-    setwechatcount.h
+    setwechatcount.h \
+    reportemailrecord.h \
+    reportmsgrecord.h \
+    reportwechatrecord.h
 
 FORMS    += mainwindow.ui \
     netlist.ui \
@@ -56,4 +62,7 @@ FORMS    += mainwindow.ui \
     emailset.ui \
     setmsgcount.ui \
     setemailcount.ui \
-    setwechatcount.ui
+    setwechatcount.ui \
+    reportemailrecord.ui \
+    reportmsgrecord.ui \
+    reportwechatrecord.ui

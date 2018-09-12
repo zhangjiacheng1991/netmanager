@@ -62,7 +62,10 @@ SOURCES       = ../netmanager/main.cpp \
 		../netmanager/emailset.cpp \
 		../netmanager/setmsgcount.cpp \
 		../netmanager/setemailcount.cpp \
-		../netmanager/setwechatcount.cpp moc_mainwindow.cpp \
+		../netmanager/setwechatcount.cpp \
+		../netmanager/reportemailrecord.cpp \
+		../netmanager/reportmsgrecord.cpp \
+		../netmanager/reportwechatrecord.cpp moc_mainwindow.cpp \
 		moc_netlist.cpp \
 		moc_netadd.cpp \
 		moc_setconfig.cpp \
@@ -75,7 +78,10 @@ SOURCES       = ../netmanager/main.cpp \
 		moc_emailset.cpp \
 		moc_setmsgcount.cpp \
 		moc_setemailcount.cpp \
-		moc_setwechatcount.cpp
+		moc_setwechatcount.cpp \
+		moc_reportemailrecord.cpp \
+		moc_reportmsgrecord.cpp \
+		moc_reportwechatrecord.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		netlist.o \
@@ -91,6 +97,9 @@ OBJECTS       = main.o \
 		setmsgcount.o \
 		setemailcount.o \
 		setwechatcount.o \
+		reportemailrecord.o \
+		reportmsgrecord.o \
+		reportwechatrecord.o \
 		moc_mainwindow.o \
 		moc_netlist.o \
 		moc_netadd.o \
@@ -104,7 +113,10 @@ OBJECTS       = main.o \
 		moc_emailset.o \
 		moc_setmsgcount.o \
 		moc_setemailcount.o \
-		moc_setwechatcount.o
+		moc_setwechatcount.o \
+		moc_reportemailrecord.o \
+		moc_reportmsgrecord.o \
+		moc_reportwechatrecord.o
 DIST          = ../../Qt5.4.1/5.4/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Qt5.4.1/5.4/gcc_64/mkspecs/common/shell-unix.conf \
 		../../Qt5.4.1/5.4/gcc_64/mkspecs/common/unix.conf \
@@ -237,7 +249,10 @@ DIST          = ../../Qt5.4.1/5.4/gcc_64/mkspecs/features/spec_pre.prf \
 		../netmanager/emailset.h \
 		../netmanager/setmsgcount.h \
 		../netmanager/setemailcount.h \
-		../netmanager/setwechatcount.h ../netmanager/main.cpp \
+		../netmanager/setwechatcount.h \
+		../netmanager/reportemailrecord.h \
+		../netmanager/reportmsgrecord.h \
+		../netmanager/reportwechatrecord.h ../netmanager/main.cpp \
 		../netmanager/mainwindow.cpp \
 		../netmanager/netlist.cpp \
 		../netmanager/netadd.cpp \
@@ -251,7 +266,10 @@ DIST          = ../../Qt5.4.1/5.4/gcc_64/mkspecs/features/spec_pre.prf \
 		../netmanager/emailset.cpp \
 		../netmanager/setmsgcount.cpp \
 		../netmanager/setemailcount.cpp \
-		../netmanager/setwechatcount.cpp
+		../netmanager/setwechatcount.cpp \
+		../netmanager/reportemailrecord.cpp \
+		../netmanager/reportmsgrecord.cpp \
+		../netmanager/reportwechatrecord.cpp
 QMAKE_TARGET  = netmanager
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = netmanager
@@ -279,7 +297,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_netlist.h ui_netadd.h ui_setconfig.h ui_report.h ui_netmanager.h ui_addnetgroup.h ui_errrecord.h ui_emailreport.h ui_dialog_warnsound.h ui_emailset.h ui_setmsgcount.h ui_setemailcount.h ui_setwechatcount.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_netlist.h ui_netadd.h ui_setconfig.h ui_report.h ui_netmanager.h ui_addnetgroup.h ui_errrecord.h ui_emailreport.h ui_dialog_warnsound.h ui_emailset.h ui_setmsgcount.h ui_setemailcount.h ui_setwechatcount.h ui_reportemailrecord.h ui_reportmsgrecord.h ui_reportwechatrecord.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../netmanager/netmanager.pro ../../Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++/qmake.conf ../../Qt5.4.1/5.4/gcc_64/mkspecs/features/spec_pre.prf \
@@ -543,9 +561,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../netmanager/mainwindow.h ../netmanager/netlist.h ../netmanager/netadd.h ../netmanager/setconfig.h ../netmanager/report.h ../netmanager/netmanager.h ../netmanager/addnetgroup.h ../netmanager/errrecord.h ../netmanager/emailreport.h ../netmanager/dialog_warnsound.h ../netmanager/emailset.h ../netmanager/setmsgcount.h ../netmanager/setemailcount.h ../netmanager/setwechatcount.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../netmanager/main.cpp ../netmanager/mainwindow.cpp ../netmanager/netlist.cpp ../netmanager/netadd.cpp ../netmanager/setconfig.cpp ../netmanager/report.cpp ../netmanager/netmanager.cpp ../netmanager/addnetgroup.cpp ../netmanager/errrecord.cpp ../netmanager/emailreport.cpp ../netmanager/dialog_warnsound.cpp ../netmanager/emailset.cpp ../netmanager/setmsgcount.cpp ../netmanager/setemailcount.cpp ../netmanager/setwechatcount.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../netmanager/mainwindow.ui ../netmanager/netlist.ui ../netmanager/netadd.ui ../netmanager/setconfig.ui ../netmanager/report.ui ../netmanager/netmanager.ui ../netmanager/addnetgroup.ui ../netmanager/errrecord.ui ../netmanager/emailreport.ui ../netmanager/dialog_warnsound.ui ../netmanager/emailset.ui ../netmanager/setmsgcount.ui ../netmanager/setemailcount.ui ../netmanager/setwechatcount.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../netmanager/mainwindow.h ../netmanager/netlist.h ../netmanager/netadd.h ../netmanager/setconfig.h ../netmanager/report.h ../netmanager/netmanager.h ../netmanager/addnetgroup.h ../netmanager/errrecord.h ../netmanager/emailreport.h ../netmanager/dialog_warnsound.h ../netmanager/emailset.h ../netmanager/setmsgcount.h ../netmanager/setemailcount.h ../netmanager/setwechatcount.h ../netmanager/reportemailrecord.h ../netmanager/reportmsgrecord.h ../netmanager/reportwechatrecord.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../netmanager/main.cpp ../netmanager/mainwindow.cpp ../netmanager/netlist.cpp ../netmanager/netadd.cpp ../netmanager/setconfig.cpp ../netmanager/report.cpp ../netmanager/netmanager.cpp ../netmanager/addnetgroup.cpp ../netmanager/errrecord.cpp ../netmanager/emailreport.cpp ../netmanager/dialog_warnsound.cpp ../netmanager/emailset.cpp ../netmanager/setmsgcount.cpp ../netmanager/setemailcount.cpp ../netmanager/setwechatcount.cpp ../netmanager/reportemailrecord.cpp ../netmanager/reportmsgrecord.cpp ../netmanager/reportwechatrecord.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../netmanager/mainwindow.ui ../netmanager/netlist.ui ../netmanager/netadd.ui ../netmanager/setconfig.ui ../netmanager/report.ui ../netmanager/netmanager.ui ../netmanager/addnetgroup.ui ../netmanager/errrecord.ui ../netmanager/emailreport.ui ../netmanager/dialog_warnsound.ui ../netmanager/emailset.ui ../netmanager/setmsgcount.ui ../netmanager/setemailcount.ui ../netmanager/setwechatcount.ui ../netmanager/reportemailrecord.ui ../netmanager/reportmsgrecord.ui ../netmanager/reportwechatrecord.ui $(DISTDIR)/
 
 
 clean:compiler_clean 
@@ -568,9 +586,9 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_netlist.cpp moc_netadd.cpp moc_setconfig.cpp moc_report.cpp moc_netmanager.cpp moc_addnetgroup.cpp moc_errrecord.cpp moc_emailreport.cpp moc_dialog_warnsound.cpp moc_emailset.cpp moc_setmsgcount.cpp moc_setemailcount.cpp moc_setwechatcount.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_netlist.cpp moc_netadd.cpp moc_setconfig.cpp moc_report.cpp moc_netmanager.cpp moc_addnetgroup.cpp moc_errrecord.cpp moc_emailreport.cpp moc_dialog_warnsound.cpp moc_emailset.cpp moc_setmsgcount.cpp moc_setemailcount.cpp moc_setwechatcount.cpp moc_reportemailrecord.cpp moc_reportmsgrecord.cpp moc_reportwechatrecord.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_netlist.cpp moc_netadd.cpp moc_setconfig.cpp moc_report.cpp moc_netmanager.cpp moc_addnetgroup.cpp moc_errrecord.cpp moc_emailreport.cpp moc_dialog_warnsound.cpp moc_emailset.cpp moc_setmsgcount.cpp moc_setemailcount.cpp moc_setwechatcount.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_netlist.cpp moc_netadd.cpp moc_setconfig.cpp moc_report.cpp moc_netmanager.cpp moc_addnetgroup.cpp moc_errrecord.cpp moc_emailreport.cpp moc_dialog_warnsound.cpp moc_emailset.cpp moc_setmsgcount.cpp moc_setemailcount.cpp moc_setwechatcount.cpp moc_reportemailrecord.cpp moc_reportmsgrecord.cpp moc_reportwechatrecord.cpp
 moc_mainwindow.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QMainWindow \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -682,13 +700,14 @@ moc_mainwindow.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QMainWindow \
 		../netmanager/netadd.h \
 		../netmanager/addnetgroup.h \
 		../netmanager/errrecord.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTabWidget \
 		../netmanager/setconfig.h \
 		../netmanager/report.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTabWidget \
 		../netmanager/emailreport.h \
 		../netmanager/setmsgcount.h \
 		../netmanager/setemailcount.h \
 		../netmanager/setwechatcount.h \
+		../netmanager/dialog_warnsound.h \
 		../netmanager/mainwindow.h
 	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/mainwindow.h -o moc_mainwindow.cpp
 
@@ -1222,6 +1241,9 @@ moc_netmanager.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../netmanager/netadd.h \
 		../netmanager/addnetgroup.h \
 		../netmanager/errrecord.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTabWidget \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
 		../netmanager/netmanager.h
 	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/netmanager.h -o moc_netmanager.cpp
 
@@ -1432,6 +1454,9 @@ moc_errrecord.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTabWidget \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
 		../netmanager/errrecord.h
 	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/errrecord.h -o moc_errrecord.cpp
 
@@ -1540,8 +1565,7 @@ moc_emailreport.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../netmanager/emailreport.h
 	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/emailreport.h -o moc_emailreport.cpp
 
-moc_dialog_warnsound.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QDialog \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdialog.h \
+moc_dialog_warnsound.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobal.h \
@@ -2066,11 +2090,326 @@ moc_setwechatcount.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../netmanager/setwechatcount.h
 	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/setwechatcount.h -o moc_setwechatcount.cpp
 
+moc_reportemailrecord.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobal.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qconfig.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfeatures.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtypetraits.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlogging.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qflags.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_mips.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_x86.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_unix.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmutex.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobject.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstring.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qchar.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qiterator.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qisenum.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmargins.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qrect.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsize.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qpoint.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpalette.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qcolor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qrgb.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qpair.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qregexp.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qbrush.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvector.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qregion.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qline.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtransform.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qimage.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qhash.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfont.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qcursor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qevent.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvariant.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qdebug.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlocale.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qset.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qurl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfile.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		../netmanager/reportemailrecord.h
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/reportemailrecord.h -o moc_reportemailrecord.cpp
+
+moc_reportmsgrecord.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobal.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qconfig.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfeatures.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtypetraits.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlogging.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qflags.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_mips.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_x86.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_unix.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmutex.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobject.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstring.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qchar.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qiterator.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qisenum.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmargins.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qrect.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsize.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qpoint.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpalette.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qcolor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qrgb.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qpair.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qregexp.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qbrush.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvector.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qregion.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qline.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtransform.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qimage.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qhash.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfont.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qcursor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qevent.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvariant.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qdebug.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlocale.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qset.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qurl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfile.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		../netmanager/reportmsgrecord.h
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/reportmsgrecord.h -o moc_reportmsgrecord.cpp
+
+moc_reportwechatrecord.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobal.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qconfig.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfeatures.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtypetraits.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlogging.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qflags.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_mips.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_x86.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_unix.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmutex.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobject.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstring.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qchar.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qiterator.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qisenum.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmargins.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qrect.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsize.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qpoint.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpalette.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qcolor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qrgb.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qpair.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qregexp.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qbrush.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvector.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qregion.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qline.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtransform.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qimage.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qhash.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfont.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qcursor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qevent.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvariant.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qdebug.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlocale.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qset.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qurl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfile.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		../netmanager/reportwechatrecord.h
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/reportwechatrecord.h -o moc_reportwechatrecord.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_netlist.h ui_netadd.h ui_setconfig.h ui_report.h ui_netmanager.h ui_addnetgroup.h ui_errrecord.h ui_emailreport.h ui_dialog_warnsound.h ui_emailset.h ui_setmsgcount.h ui_setemailcount.h ui_setwechatcount.h
+compiler_uic_make_all: ui_mainwindow.h ui_netlist.h ui_netadd.h ui_setconfig.h ui_report.h ui_netmanager.h ui_addnetgroup.h ui_errrecord.h ui_emailreport.h ui_dialog_warnsound.h ui_emailset.h ui_setmsgcount.h ui_setemailcount.h ui_setwechatcount.h ui_reportemailrecord.h ui_reportmsgrecord.h ui_reportwechatrecord.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_netlist.h ui_netadd.h ui_setconfig.h ui_report.h ui_netmanager.h ui_addnetgroup.h ui_errrecord.h ui_emailreport.h ui_dialog_warnsound.h ui_emailset.h ui_setmsgcount.h ui_setemailcount.h ui_setwechatcount.h
+	-$(DEL_FILE) ui_mainwindow.h ui_netlist.h ui_netadd.h ui_setconfig.h ui_report.h ui_netmanager.h ui_addnetgroup.h ui_errrecord.h ui_emailreport.h ui_dialog_warnsound.h ui_emailset.h ui_setmsgcount.h ui_setemailcount.h ui_setwechatcount.h ui_reportemailrecord.h ui_reportmsgrecord.h ui_reportwechatrecord.h
 ui_mainwindow.h: ../netmanager/mainwindow.ui
 	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/uic ../netmanager/mainwindow.ui -o ui_mainwindow.h
 
@@ -2112,6 +2451,15 @@ ui_setemailcount.h: ../netmanager/setemailcount.ui
 
 ui_setwechatcount.h: ../netmanager/setwechatcount.ui
 	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/uic ../netmanager/setwechatcount.ui -o ui_setwechatcount.h
+
+ui_reportemailrecord.h: ../netmanager/reportemailrecord.ui
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/uic ../netmanager/reportemailrecord.ui -o ui_reportemailrecord.h
+
+ui_reportmsgrecord.h: ../netmanager/reportmsgrecord.ui
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/uic ../netmanager/reportmsgrecord.ui -o ui_reportmsgrecord.h
+
+ui_reportwechatrecord.h: ../netmanager/reportwechatrecord.ui
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/uic ../netmanager/reportwechatrecord.ui -o ui_reportwechatrecord.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -2235,13 +2583,14 @@ main.o: ../netmanager/main.cpp ../netmanager/mainwindow.h \
 		../netmanager/netadd.h \
 		../netmanager/addnetgroup.h \
 		../netmanager/errrecord.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTabWidget \
 		../netmanager/setconfig.h \
 		../netmanager/report.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTabWidget \
 		../netmanager/emailreport.h \
 		../netmanager/setmsgcount.h \
 		../netmanager/setemailcount.h \
 		../netmanager/setwechatcount.h \
+		../netmanager/dialog_warnsound.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QApplication \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qapplication.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcoreapplication.h \
@@ -2363,13 +2712,14 @@ mainwindow.o: ../netmanager/mainwindow.cpp ../netmanager/mainwindow.h \
 		../netmanager/netadd.h \
 		../netmanager/addnetgroup.h \
 		../netmanager/errrecord.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTabWidget \
 		../netmanager/setconfig.h \
 		../netmanager/report.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTabWidget \
 		../netmanager/emailreport.h \
 		../netmanager/setmsgcount.h \
 		../netmanager/setemailcount.h \
 		../netmanager/setwechatcount.h \
+		../netmanager/dialog_warnsound.h \
 		ui_mainwindow.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/QVariant \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QAction \
@@ -2384,18 +2734,16 @@ mainwindow.o: ../netmanager/mainwindow.cpp ../netmanager/mainwindow.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qinputmethod.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QButtonGroup \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QFrame \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QGridLayout \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayout.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qitemselectionmodel.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -2410,6 +2758,7 @@ mainwindow.o: ../netmanager/mainwindow.cpp ../netmanager/mainwindow.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLayout \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QMenu \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qmenu.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QMenuBar \
@@ -2417,6 +2766,8 @@ mainwindow.o: ../netmanager/mainwindow.cpp ../netmanager/mainwindow.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QPushButton \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QScrollArea \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QSpacerItem \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QStatusBar \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstatusbar.h \
@@ -2562,12 +2913,7 @@ netlist.o: ../netmanager/netlist.cpp ../netmanager/netlist.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QGridLayout \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QFrame \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -2585,8 +2931,7 @@ netlist.o: ../netmanager/netlist.cpp ../netmanager/netlist.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlistview.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QPushButton \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QSpacerItem
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o netlist.o ../netmanager/netlist.cpp
 
 netadd.o: ../netmanager/netadd.cpp ../netmanager/netadd.h \
@@ -2723,12 +3068,8 @@ netadd.o: ../netmanager/netadd.cpp ../netmanager/netadd.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QFrame \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QGridLayout \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QGroupBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgroupbox.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -2741,9 +3082,7 @@ netadd.o: ../netmanager/netadd.cpp ../netmanager/netadd.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextcursor.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextformat.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpen.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextoption.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QSpacerItem \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QVBoxLayout
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextoption.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o netadd.o ../netmanager/netadd.cpp
 
 setconfig.o: ../netmanager/setconfig.cpp ../netmanager/setconfig.h \
@@ -3151,11 +3490,13 @@ netmanager.o: ../netmanager/netmanager.cpp ../netmanager/netmanager.h \
 		../netmanager/netadd.h \
 		../netmanager/addnetgroup.h \
 		../netmanager/errrecord.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTabWidget \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
 		ui_netmanager.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/QVariant \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QAction \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qaction.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qactiongroup.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QApplication \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qapplication.h \
@@ -3187,7 +3528,6 @@ netmanager.o: ../netmanager/netmanager.cpp ../netmanager/netmanager.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractslider.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyle.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabbar.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QStackedWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstackedwidget.h
@@ -3326,12 +3666,10 @@ addnetgroup.o: ../netmanager/addnetgroup.cpp ../netmanager/addnetgroup.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QGridLayout \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QDialogButtonBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QGroupBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgroupbox.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -3345,9 +3683,9 @@ addnetgroup.o: ../netmanager/addnetgroup.cpp ../netmanager/addnetgroup.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextformat.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpen.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextoption.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QListView \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlistview.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QSpacerItem
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTextEdit \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtextedit.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextdocument.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addnetgroup.o ../netmanager/addnetgroup.cpp
 
 errrecord.o: ../netmanager/errrecord.cpp ../netmanager/errrecord.h \
@@ -3453,11 +3791,13 @@ errrecord.o: ../netmanager/errrecord.cpp ../netmanager/errrecord.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTabWidget \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
 		ui_errrecord.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/QVariant \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QAction \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qaction.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qactiongroup.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QApplication \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qapplication.h \
@@ -3468,9 +3808,6 @@ errrecord.o: ../netmanager/errrecord.cpp ../netmanager/errrecord.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qinputmethod.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QButtonGroup \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QCheckBox \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qcheckbox.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QComboBox \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qcombobox.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -3482,19 +3819,10 @@ errrecord.o: ../netmanager/errrecord.cpp ../netmanager/errrecord.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractslider.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyle.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabbar.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QDialogButtonBox \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QFrame \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QGridLayout \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHBoxLayout \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -3508,12 +3836,12 @@ errrecord.o: ../netmanager/errrecord.cpp ../netmanager/errrecord.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextformat.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpen.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QListWidget \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlistview.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QPushButton \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QSpacerItem \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTextEdit \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtextedit.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextdocument.h
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o errrecord.o ../netmanager/errrecord.cpp
 
 emailreport.o: ../netmanager/emailreport.cpp ../netmanager/emailreport.h \
@@ -3662,8 +3990,7 @@ emailreport.o: ../netmanager/emailreport.cpp ../netmanager/emailreport.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o emailreport.o ../netmanager/emailreport.cpp
 
 dialog_warnsound.o: ../netmanager/dialog_warnsound.cpp ../netmanager/dialog_warnsound.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QDialog \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdialog.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobal.h \
@@ -3780,15 +4107,8 @@ dialog_warnsound.o: ../netmanager/dialog_warnsound.cpp ../netmanager/dialog_warn
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qinputmethod.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QButtonGroup \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QDialogButtonBox \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QComboBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qcombobox.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyleoption.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractspinbox.h \
@@ -3799,7 +4119,29 @@ dialog_warnsound.o: ../netmanager/dialog_warnsound.cpp ../netmanager/dialog_warn
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyle.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabbar.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QDialogButtonBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QGroupBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgroupbox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLabel \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog_warnsound.o ../netmanager/dialog_warnsound.cpp
 
 emailset.o: ../netmanager/emailset.cpp ../netmanager/emailset.h \
@@ -4073,16 +4415,8 @@ setmsgcount.o: ../netmanager/setmsgcount.cpp ../netmanager/setmsgcount.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qinputmethod.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QButtonGroup \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QCheckBox \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qcheckbox.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QComboBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qcombobox.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyleoption.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractspinbox.h \
@@ -4094,8 +4428,33 @@ setmsgcount.o: ../netmanager/setmsgcount.cpp ../netmanager/setmsgcount.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabbar.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QDialogButtonBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QFrame \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qitemselectionmodel.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLabel \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlabel.h
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QSpacerItem \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTextEdit \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtextedit.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextdocument.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o setmsgcount.o ../netmanager/setmsgcount.cpp
 
 setemailcount.o: ../netmanager/setemailcount.cpp ../netmanager/setemailcount.h \
@@ -4219,13 +4578,8 @@ setemailcount.o: ../netmanager/setemailcount.cpp ../netmanager/setemailcount.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QComboBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qcombobox.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyleoption.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractspinbox.h \
@@ -4237,6 +4591,18 @@ setemailcount.o: ../netmanager/setemailcount.cpp ../netmanager/setemailcount.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabbar.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QDialogButtonBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QFrame \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QGroupBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgroupbox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qitemselectionmodel.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlabel.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLineEdit \
@@ -4353,8 +4719,382 @@ setwechatcount.o: ../netmanager/setwechatcount.cpp ../netmanager/setwechatcount.
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_setwechatcount.h
+		ui_setwechatcount.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/QVariant \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QAction \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qaction.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QApplication \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QButtonGroup \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QDialogButtonBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QFrame \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLabel \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QRadioButton \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qradiobutton.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QSpacerItem \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QTextEdit \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtextedit.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextdocument.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o setwechatcount.o ../netmanager/setwechatcount.cpp
+
+reportemailrecord.o: ../netmanager/reportemailrecord.cpp ../netmanager/reportemailrecord.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobal.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qconfig.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfeatures.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtypetraits.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlogging.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qflags.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_mips.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_x86.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_unix.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmutex.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobject.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstring.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qchar.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qiterator.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qisenum.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmargins.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qrect.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsize.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qpoint.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpalette.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qcolor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qrgb.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qpair.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qregexp.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qbrush.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvector.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qregion.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qline.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtransform.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qimage.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qhash.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfont.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qcursor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qevent.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvariant.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qdebug.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlocale.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qset.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qurl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfile.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		ui_reportemailrecord.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o reportemailrecord.o ../netmanager/reportemailrecord.cpp
+
+reportmsgrecord.o: ../netmanager/reportmsgrecord.cpp ../netmanager/reportmsgrecord.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobal.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qconfig.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfeatures.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtypetraits.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlogging.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qflags.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_mips.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_x86.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_unix.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmutex.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobject.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstring.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qchar.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qiterator.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qisenum.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmargins.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qrect.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsize.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qpoint.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpalette.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qcolor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qrgb.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qpair.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qregexp.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qbrush.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvector.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qregion.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qline.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtransform.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qimage.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qhash.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfont.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qcursor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qevent.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvariant.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qdebug.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlocale.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qset.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qurl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfile.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		ui_reportmsgrecord.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o reportmsgrecord.o ../netmanager/reportmsgrecord.cpp
+
+reportwechatrecord.o: ../netmanager/reportwechatrecord.cpp ../netmanager/reportwechatrecord.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobal.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qconfig.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfeatures.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtypetraits.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlogging.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qflags.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_mips.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_x86.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qatomic_unix.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmutex.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobject.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstring.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qchar.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qiterator.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qisenum.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmargins.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qrect.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsize.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qpoint.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpalette.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qcolor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qrgb.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qpair.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qregexp.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qbrush.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvector.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qregion.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qline.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtransform.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qimage.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qhash.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfont.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qcursor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qevent.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qvariant.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qmap.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qdebug.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qlocale.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qset.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qurl.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfile.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		ui_reportwechatrecord.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o reportwechatrecord.o ../netmanager/reportwechatrecord.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
@@ -4397,6 +5137,15 @@ moc_setemailcount.o: moc_setemailcount.cpp
 
 moc_setwechatcount.o: moc_setwechatcount.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_setwechatcount.o moc_setwechatcount.cpp
+
+moc_reportemailrecord.o: moc_reportemailrecord.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_reportemailrecord.o moc_reportemailrecord.cpp
+
+moc_reportmsgrecord.o: moc_reportmsgrecord.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_reportmsgrecord.o moc_reportmsgrecord.cpp
+
+moc_reportwechatrecord.o: moc_reportwechatrecord.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_reportwechatrecord.o moc_reportwechatrecord.cpp
 
 ####### Install
 

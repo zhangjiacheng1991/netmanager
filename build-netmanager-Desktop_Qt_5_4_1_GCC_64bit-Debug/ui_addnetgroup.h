@@ -14,13 +14,12 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
-#include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -28,16 +27,13 @@ QT_BEGIN_NAMESPACE
 class Ui_addNetgroup
 {
 public:
-    QGridLayout *gridLayout;
-    QHBoxLayout *horizontalLayout;
+    QGroupBox *groupBox;
+    QTextEdit *textEdit;
+    QDialogButtonBox *buttonBox;
     QLabel *label;
     QComboBox *comboBox;
     QLabel *label_2;
     QLineEdit *lineEdit_name;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_3;
-    QSpacerItem *horizontalSpacer;
-    QListView *listView;
 
     void setupUi(QWidget *addNetgroup)
     {
@@ -49,54 +45,28 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(addNetgroup->sizePolicy().hasHeightForWidth());
         addNetgroup->setSizePolicy(sizePolicy);
-        gridLayout = new QGridLayout(addNetgroup);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        groupBox = new QGroupBox(addNetgroup);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setGeometry(QRect(250, 180, 351, 181));
+        textEdit = new QTextEdit(groupBox);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setGeometry(QRect(0, 20, 331, 151));
+        buttonBox = new QDialogButtonBox(addNetgroup);
+        buttonBox->setObjectName(QStringLiteral("buttonBox"));
+        buttonBox->setGeometry(QRect(400, 370, 176, 27));
+        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         label = new QLabel(addNetgroup);
         label->setObjectName(QStringLiteral("label"));
-
-        horizontalLayout->addWidget(label);
-
+        label->setGeometry(QRect(460, 140, 75, 20));
         comboBox = new QComboBox(addNetgroup);
         comboBox->setObjectName(QStringLiteral("comboBox"));
-
-        horizontalLayout->addWidget(comboBox);
-
+        comboBox->setGeometry(QRect(520, 140, 60, 21));
         label_2 = new QLabel(addNetgroup);
         label_2->setObjectName(QStringLiteral("label_2"));
-
-        horizontalLayout->addWidget(label_2);
-
+        label_2->setGeometry(QRect(250, 140, 71, 20));
         lineEdit_name = new QLineEdit(addNetgroup);
         lineEdit_name->setObjectName(QStringLiteral("lineEdit_name"));
-
-        horizontalLayout->addWidget(lineEdit_name);
-
-
-        gridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_3 = new QLabel(addNetgroup);
-        label_3->setObjectName(QStringLiteral("label_3"));
-
-        horizontalLayout_2->addWidget(label_3);
-
-        horizontalSpacer = new QSpacerItem(238, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer);
-
-
-        gridLayout->addLayout(horizontalLayout_2, 1, 0, 1, 1);
-
-        listView = new QListView(addNetgroup);
-        listView->setObjectName(QStringLiteral("listView"));
-        sizePolicy.setHeightForWidth(listView->sizePolicy().hasHeightForWidth());
-        listView->setSizePolicy(sizePolicy);
-
-        gridLayout->addWidget(listView, 2, 0, 1, 1);
-
+        lineEdit_name->setGeometry(QRect(310, 140, 146, 21));
 
         retranslateUi(addNetgroup);
 
@@ -106,14 +76,15 @@ public:
     void retranslateUi(QWidget *addNetgroup)
     {
         addNetgroup->setWindowTitle(QApplication::translate("addNetgroup", "Form", 0));
-        label->setText(QApplication::translate("addNetgroup", "\346\211\200\345\261\236\347\261\273\345\236\213\357\274\232", 0));
+        groupBox->setTitle(QApplication::translate("addNetgroup", "\346\217\217\350\277\260", 0));
+        label->setText(QApplication::translate("addNetgroup", "\346\211\200\345\261\236\347\273\204\357\274\232", 0));
         comboBox->clear();
         comboBox->insertItems(0, QStringList()
          << QApplication::translate("addNetgroup", "\345\250\261\344\271\220", 0)
+         << QApplication::translate("addNetgroup", "\346\220\234\347\264\242", 0)
          << QApplication::translate("addNetgroup", "\350\247\206\351\242\221", 0)
         );
-        label_2->setText(QApplication::translate("addNetgroup", "\345\210\206\347\261\273\345\220\215\357\274\232", 0));
-        label_3->setText(QApplication::translate("addNetgroup", "\346\217\217\350\277\260\357\274\232", 0));
+        label_2->setText(QApplication::translate("addNetgroup", "\346\226\260\347\261\273\345\220\215\357\274\232", 0));
     } // retranslateUi
 
 };

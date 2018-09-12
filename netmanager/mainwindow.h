@@ -10,6 +10,10 @@
 #include "setmsgcount.h"
 #include "setemailcount.h"
 #include "setwechatcount.h"
+#include "dialog_warnsound.h"
+#include "reportemailrecord.h"
+#include "reportmsgrecord.h"
+#include "reportwechatrecord.h"
 
 
 namespace Ui {
@@ -73,8 +77,13 @@ private:
     report*  rpt;
     errRecord* eRecd;
     setMsgCount* sMsgCount;
-    setEmailcount* sEmailCount;
-    setWechatCount* sWechatCount;
+   setEmailcount* sEmailCount;
+   setWechatCount* sWechatCount;
+   Dialog_warnSound* sWarn;
+   reportEmailRecord* rERecord;
+   reportMsgrecord*   rMRecord;
+   reportWechatrecord* rWRecord;
+
 
 
 

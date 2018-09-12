@@ -7,22 +7,30 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->label->setText("网络列表");
-    nManager = new netmanager(ui->frame);
+    nManager = new netmanager(ui->scrollArea);
     nManager->nList->show();
     newWidget = nManager->nList;
 
-    sConfig = new setConfig(ui->frame);
+    sConfig = new setConfig(ui->scrollArea);
     sConfig->hide();
-    rpt = new report(ui->frame);
+    rpt = new report(ui->scrollArea);
     rpt->hide();
-    eRecd = new errRecord(ui->frame);
+    eRecd = new errRecord(ui->scrollArea);
     eRecd->hide();
-    sMsgCount = new setMsgCount(ui->frame);
+    sMsgCount = new setMsgCount(ui->scrollArea);
     sMsgCount->hide();
-    sEmailCount = new setEmailcount(ui->frame);
+    sEmailCount = new setEmailcount(ui->scrollArea);
     sEmailCount->hide();
-    sWechatCount = new setWechatCount(ui->frame);
+    sWechatCount = new setWechatCount(ui->scrollArea);
     sWechatCount->hide();
+    sWarn = new Dialog_warnSound(ui->scrollArea);
+    sWarn->hide();
+    rERecord = new reportEmailRecord(ui->scrollArea);
+    rERecord->hide();
+    rMRecord = new reportMsgrecord(ui->scrollArea);
+    rMRecord->hide();
+    rWRecord = new reportWechatrecord(ui->scrollArea);
+    rWRecord->hide();
 }
 
 MainWindow::~MainWindow()
@@ -74,45 +82,37 @@ void MainWindow::on_action_2_triggered()
     newWidget = sConfig;
     ui->toolBox->setCurrentIndex(1);
 }
-//添加报表1菜单槽函数
+//添加邮件报表菜单
 void MainWindow::on_actionMeil_2_triggered()
 {
-    ui->label->setText("报表");
+    ui->label->setText("邮件发送报表");
     newWidget->hide();
-    rpt->tabwidget->setCurrentIndex(0);
-    newWidget = rpt;
-    rpt->show();
-    ui->toolBox->setCurrentIndex(2);
-
-
+    rERecord->show();
+    newWidget = rERecord;
 }
-//添加报表2菜单槽函数
+//添加短信报表菜单
 void MainWindow::on_actionMsg_2_triggered()
 {
-    ui->label->setText("报表");
+    ui->label->setText("短信报表");
     newWidget->hide();
-    rpt->tabwidget->setCurrentIndex(1);
-    newWidget = rpt;
-    rpt->show();
-     ui->toolBox->setCurrentIndex(2);
+    rMRecord->show();
+    newWidget = rMRecord;
 }
-//添加报表3菜单槽函数
+//添加企业微信报表菜单
 void MainWindow::on_actionGroup_2_triggered()
 {
-    ui->label->setText("报表");
+    ui->label->setText("企业微信报表");
     newWidget->hide();
-    rpt->tabwidget->setCurrentIndex(2);
-    newWidget = rpt;
-    rpt->show();
-     ui->toolBox->setCurrentIndex(2);
+    rWRecord->show();
+    newWidget = rWRecord;
 }
 
 void MainWindow::on_actionSound_triggered()
 {
     ui->label->setText("报警设置");
     newWidget->hide();
-    eRecd->show();
-    newWidget = eRecd;
+    sWarn->show();
+    newWidget = sWarn;
     ui->toolBox->setCurrentIndex(1);
 
 }
@@ -155,8 +155,9 @@ void MainWindow::on_actionMsg_triggered()
 //短信参数设置
 void MainWindow::on_pushButton_8_clicked()
 {
-    MainWindow::on_actionMsg_triggered();
+   MainWindow::on_actionMsg_triggered();
 }
+
 //邮箱参数设置菜单
 void MainWindow::on_actionMeil_triggered()
 {

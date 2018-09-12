@@ -2,7 +2,7 @@
 #define ERRRECORD_H
 
 #include <QWidget>
-
+#include <QTabWidget>
 namespace Ui {
 class errRecord;
 }
@@ -17,6 +17,8 @@ public:
 
 private:
     Ui::errRecord *ui;
+public:
+
 };
 
 #endif // ERRRECORD_H

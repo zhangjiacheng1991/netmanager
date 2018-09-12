@@ -2,7 +2,7 @@
 #include "ui_dialog_warnsound.h"
 
 Dialog_warnSound::Dialog_warnSound(QWidget *parent) :
-    QDialog(parent),
+    QWidget(parent),
     ui(new Ui::Dialog_warnSound)
 {
     ui->setupUi(this);

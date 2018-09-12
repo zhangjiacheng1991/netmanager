@@ -1,13 +1,13 @@
 #ifndef DIALOG_WARNSOUND_H
 #define DIALOG_WARNSOUND_H
 
-#include <QDialog>
+#include <QWidget>
 
 namespace Ui {
 class Dialog_warnSound;
 }
 
-class Dialog_warnSound : public QDialog
+class Dialog_warnSound : public QWidget
 {
     Q_OBJECT
 
