@@ -186,3 +186,18 @@ void MainWindow::on_actionWechar_triggered()
 {
     MainWindow::on_pushButton_9_clicked();
 }
+//添加短信报表
+void MainWindow::on_pushButton_13_clicked()
+{
+    MainWindow::on_actionMsg_2_triggered();
+}
+//添加企业微信报表
+void MainWindow::on_pushButton_14_clicked()
+{
+    MainWindow::on_actionGroup_2_triggered();
+}
+ //添加邮件报表菜单
+void MainWindow::on_pushButton_12_clicked()
+{
+    MainWindow::on_actionMeil_2_triggered();
+}

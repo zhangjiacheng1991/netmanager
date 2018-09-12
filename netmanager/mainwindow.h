@@ -69,6 +69,12 @@ private slots:
 
     void on_actionWechar_triggered();
 
+    void on_pushButton_13_clicked();
+
+    void on_pushButton_14_clicked();
+
+    void on_pushButton_12_clicked();
+
 private:
     Ui::MainWindow *ui;
     netmanager* nManager;
