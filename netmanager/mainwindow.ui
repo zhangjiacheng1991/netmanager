@@ -195,57 +195,65 @@
         <widget class="QPushButton" name="pushButton_7">
          <property name="geometry">
           <rect>
-           <x>10</x>
+           <x>0</x>
            <y>20</y>
-           <width>81</width>
+           <width>111</width>
            <height>27</height>
           </rect>
          </property>
          <property name="text">
-          <string>报警</string>
+          <string>报警参数设置</string>
          </property>
         </widget>
         <widget class="QPushButton" name="pushButton_8">
          <property name="geometry">
           <rect>
-           <x>10</x>
+           <x>0</x>
            <y>60</y>
-           <width>81</width>
+           <width>111</width>
            <height>27</height>
           </rect>
          </property>
          <property name="text">
-          <string>短信</string>
+          <string>短信参数设置</string>
          </property>
         </widget>
         <widget class="QPushButton" name="pushButton_9">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>100</y>
-           <width>81</width>
+           <x>0</x>
+           <y>140</y>
+           <width>111</width>
            <height>27</height>
           </rect>
          </property>
          <property name="text">
-          <string>企业微信</string>
+          <string>企业微信参数设置</string>
          </property>
         </widget>
         <widget class="QPushButton" name="pushButton_10">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>140</y>
-           <width>81</width>
+           <x>0</x>
+           <y>100</y>
+           <width>111</width>
            <height>27</height>
           </rect>
          </property>
          <property name="text">
-          <string>邮箱</string>
+          <string>邮箱参数设置</string>
          </property>
         </widget>
        </widget>
        <widget class="QWidget" name="page">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>121</width>
+          <height>348</height>
+         </rect>
+        </property>
         <attribute name="label">
          <string>报表</string>
         </attribute>
@@ -290,8 +298,6 @@
         </widget>
        </widget>
       </widget>
-      <zorder>toolBox</zorder>
-      <zorder>frame</zorder>
      </widget>
     </item>
     <item row="1" column="1">
@@ -416,22 +422,22 @@
   </action>
   <action name="actionSound">
    <property name="text">
-    <string>报警</string>
+    <string>报警参数设置</string>
    </property>
   </action>
   <action name="actionMsg">
    <property name="text">
-    <string>短信</string>
+    <string>短信参数设置</string>
    </property>
   </action>
   <action name="actionWechar">
    <property name="text">
-    <string>企业微信</string>
+    <string>企业微信参数设置</string>
    </property>
   </action>
   <action name="actionMeil">
    <property name="text">
-    <string>邮箱</string>
+    <string>邮箱参数设置</string>
    </property>
   </action>
   <action name="actionMeil_2">

@@ -7,6 +7,11 @@
 #include "setconfig.h"
 #include "report.h"
 #include "errrecord.h"
+#include "setmsgcount.h"
+#include "setemailcount.h"
+#include "setwechatcount.h"
+
+
 namespace Ui {
 class MainWindow;
 }
@@ -48,6 +53,18 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_actionMsg_triggered();
+
+    void on_pushButton_8_clicked();
+
+    void on_actionMeil_triggered();
+
+    void on_pushButton_10_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_actionWechar_triggered();
+
 private:
     Ui::MainWindow *ui;
     netmanager* nManager;
@@ -55,6 +72,9 @@ private:
     setConfig* sConfig;
     report*  rpt;
     errRecord* eRecd;
+    setMsgCount* sMsgCount;
+    setEmailcount* sEmailCount;
+    setWechatCount* sWechatCount;
 
 
 

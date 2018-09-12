@@ -180,19 +180,20 @@ public:
         page_2->setGeometry(QRect(0, 0, 121, 348));
         pushButton_7 = new QPushButton(page_2);
         pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
-        pushButton_7->setGeometry(QRect(10, 20, 81, 27));
+        pushButton_7->setGeometry(QRect(0, 20, 111, 27));
         pushButton_8 = new QPushButton(page_2);
         pushButton_8->setObjectName(QStringLiteral("pushButton_8"));
-        pushButton_8->setGeometry(QRect(10, 60, 81, 27));
+        pushButton_8->setGeometry(QRect(0, 60, 111, 27));
         pushButton_9 = new QPushButton(page_2);
         pushButton_9->setObjectName(QStringLiteral("pushButton_9"));
-        pushButton_9->setGeometry(QRect(10, 100, 81, 27));
+        pushButton_9->setGeometry(QRect(0, 140, 111, 27));
         pushButton_10 = new QPushButton(page_2);
         pushButton_10->setObjectName(QStringLiteral("pushButton_10"));
-        pushButton_10->setGeometry(QRect(10, 140, 81, 27));
+        pushButton_10->setGeometry(QRect(0, 100, 111, 27));
         toolBox->addItem(page_2, QString::fromUtf8("\350\256\276\347\275\256"));
         page = new QWidget();
         page->setObjectName(QStringLiteral("page"));
+        page->setGeometry(QRect(0, 0, 121, 348));
         pushButton_12 = new QPushButton(page);
         pushButton_12->setObjectName(QStringLiteral("pushButton_12"));
         pushButton_12->setGeometry(QRect(10, 130, 81, 27));
@@ -203,7 +204,6 @@ public:
         pushButton_14->setObjectName(QStringLiteral("pushButton_14"));
         pushButton_14->setGeometry(QRect(10, 80, 81, 27));
         toolBox->addItem(page, QString::fromUtf8("\346\212\245\350\241\250"));
-        toolBox->raise();
 
         gridLayout->addWidget(widget, 1, 0, 1, 1);
 
@@ -279,10 +279,10 @@ public:
         actionGroup->setText(QApplication::translate("MainWindow", "\346\267\273\345\212\240\347\275\221\347\253\231\345\210\206\347\261\273", 0));
         actionList->setText(QApplication::translate("MainWindow", "\347\275\221\347\253\231\345\210\227\350\241\250", 0));
         action2Error->setText(QApplication::translate("MainWindow", "\346\225\205\351\232\234\350\256\260\345\275\225", 0));
-        actionSound->setText(QApplication::translate("MainWindow", "\346\212\245\350\255\246", 0));
-        actionMsg->setText(QApplication::translate("MainWindow", "\347\237\255\344\277\241", 0));
-        actionWechar->setText(QApplication::translate("MainWindow", "\344\274\201\344\270\232\345\276\256\344\277\241", 0));
-        actionMeil->setText(QApplication::translate("MainWindow", "\351\202\256\347\256\261", 0));
+        actionSound->setText(QApplication::translate("MainWindow", "\346\212\245\350\255\246\345\217\202\346\225\260\350\256\276\347\275\256", 0));
+        actionMsg->setText(QApplication::translate("MainWindow", "\347\237\255\344\277\241\345\217\202\346\225\260\350\256\276\347\275\256", 0));
+        actionWechar->setText(QApplication::translate("MainWindow", "\344\274\201\344\270\232\345\276\256\344\277\241\345\217\202\346\225\260\350\256\276\347\275\256", 0));
+        actionMeil->setText(QApplication::translate("MainWindow", "\351\202\256\347\256\261\345\217\202\346\225\260\350\256\276\347\275\256", 0));
         actionMeil_2->setText(QApplication::translate("MainWindow", "\351\202\256\344\273\266\345\217\221\351\200\201\350\256\260\345\275\225", 0));
         actionMsg_2->setText(QApplication::translate("MainWindow", "\347\237\255\344\277\241\345\217\221\351\200\201\350\256\260\345\275\225", 0));
         actionGroup_2->setText(QApplication::translate("MainWindow", "\347\276\244\346\266\210\346\201\257\350\256\260\345\275\225", 0));
@@ -294,10 +294,10 @@ public:
         pushButton_3->setText(QApplication::translate("MainWindow", "\347\275\221\347\253\231\345\210\227\350\241\250", 0));
         pushButton_4->setText(QApplication::translate("MainWindow", "\346\225\205\351\232\234\350\256\260\345\275\225", 0));
         toolBox->setItemText(toolBox->indexOf(widget_2), QApplication::translate("MainWindow", "\347\275\221\347\273\234\347\256\241\347\220\206", 0));
-        pushButton_7->setText(QApplication::translate("MainWindow", "\346\212\245\350\255\246", 0));
-        pushButton_8->setText(QApplication::translate("MainWindow", "\347\237\255\344\277\241", 0));
-        pushButton_9->setText(QApplication::translate("MainWindow", "\344\274\201\344\270\232\345\276\256\344\277\241", 0));
-        pushButton_10->setText(QApplication::translate("MainWindow", "\351\202\256\347\256\261", 0));
+        pushButton_7->setText(QApplication::translate("MainWindow", "\346\212\245\350\255\246\345\217\202\346\225\260\350\256\276\347\275\256", 0));
+        pushButton_8->setText(QApplication::translate("MainWindow", "\347\237\255\344\277\241\345\217\202\346\225\260\350\256\276\347\275\256", 0));
+        pushButton_9->setText(QApplication::translate("MainWindow", "\344\274\201\344\270\232\345\276\256\344\277\241\345\217\202\346\225\260\350\256\276\347\275\256", 0));
+        pushButton_10->setText(QApplication::translate("MainWindow", "\351\202\256\347\256\261\345\217\202\346\225\260\350\256\276\347\275\256", 0));
         toolBox->setItemText(toolBox->indexOf(page_2), QApplication::translate("MainWindow", "\350\256\276\347\275\256", 0));
         pushButton_12->setText(QApplication::translate("MainWindow", "\351\202\256\344\273\266\345\217\221\351\200\201\346\212\245\350\241\250", 0));
         pushButton_13->setText(QApplication::translate("MainWindow", "\347\237\255\344\277\241\345\217\221\351\200\201\346\212\245\350\241\250", 0));

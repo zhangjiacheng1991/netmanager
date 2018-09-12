@@ -17,6 +17,12 @@ MainWindow::MainWindow(QWidget *parent) :
     rpt->hide();
     eRecd = new errRecord(ui->frame);
     eRecd->hide();
+    sMsgCount = new setMsgCount(ui->frame);
+    sMsgCount->hide();
+    sEmailCount = new setEmailcount(ui->frame);
+    sEmailCount->hide();
+    sWechatCount = new setWechatCount(ui->frame);
+    sWechatCount->hide();
 }
 
 MainWindow::~MainWindow()
@@ -136,4 +142,46 @@ void MainWindow::on_pushButton_3_clicked()
 void MainWindow::on_pushButton_4_clicked()
 {
     MainWindow::on_action2Error_triggered();
+}
+//短信参数设置菜单
+void MainWindow::on_actionMsg_triggered()
+{
+    ui->label->setText("短信参数设置");
+    newWidget->hide();
+    sMsgCount->show();
+    newWidget = sMsgCount;
+    ui->toolBox->setCurrentIndex(1);
+}
+//短信参数设置
+void MainWindow::on_pushButton_8_clicked()
+{
+    MainWindow::on_actionMsg_triggered();
+}
+//邮箱参数设置菜单
+void MainWindow::on_actionMeil_triggered()
+{
+    ui->label->setText("邮箱参数设置");
+    newWidget->hide();
+    sEmailCount->show();
+    newWidget = sEmailCount;
+    ui->toolBox->setCurrentIndex(1);
+}
+
+void MainWindow::on_pushButton_10_clicked()
+{
+    MainWindow::on_actionMeil_triggered();
+}
+//企业邮箱参数设置
+void MainWindow::on_pushButton_9_clicked()
+{
+    ui->label->setText("企业邮箱参数设置");
+    newWidget->hide();
+    sWechatCount->show();
+    newWidget = sWechatCount;
+    ui->toolBox->setCurrentIndex(1);
+}
+//企业邮箱参数设置菜单
+void MainWindow::on_actionWechar_triggered()
+{
+    MainWindow::on_pushButton_9_clicked();
 }

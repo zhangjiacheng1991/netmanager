@@ -23,7 +23,10 @@ SOURCES += main.cpp\
     errrecord.cpp \
     emailreport.cpp \
     dialog_warnsound.cpp \
-    emailset.cpp
+    emailset.cpp \
+    setmsgcount.cpp \
+    setemailcount.cpp \
+    setwechatcount.cpp
 
 HEADERS  += mainwindow.h \
     netlist.h \
@@ -35,7 +38,10 @@ HEADERS  += mainwindow.h \
     errrecord.h \
     emailreport.h \
     dialog_warnsound.h \
-    emailset.h
+    emailset.h \
+    setmsgcount.h \
+    setemailcount.h \
+    setwechatcount.h
 
 FORMS    += mainwindow.ui \
     netlist.ui \
@@ -47,4 +53,7 @@ FORMS    += mainwindow.ui \
     errrecord.ui \
     emailreport.ui \
     dialog_warnsound.ui \
-    emailset.ui
+    emailset.ui \
+    setmsgcount.ui \
+    setemailcount.ui \
+    setwechatcount.ui
