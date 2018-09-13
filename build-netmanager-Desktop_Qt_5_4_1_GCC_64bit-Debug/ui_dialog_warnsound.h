@@ -31,12 +31,12 @@ public:
     QGroupBox *groupBox_10;
     QLabel *label_16;
     QLabel *label_17;
-    QLineEdit *lineEdit_13;
-    QLineEdit *lineEdit_26;
+    QLineEdit *lineEdit_scanTime;
+    QLineEdit *lineEdit_scanInterval;
     QLabel *label_18;
-    QLineEdit *lineEdit_27;
+    QLineEdit *lineEdit_serverOvertime;
     QLabel *label_43;
-    QLineEdit *lineEdit_28;
+    QLineEdit *lineEdit_emailSendOvertime;
     QComboBox *comboBox_5;
     QLabel *label_44;
     QLabel *label_45;
@@ -44,9 +44,9 @@ public:
     QLabel *label_48;
     QLabel *label_49;
     QGroupBox *groupBox_11;
-    QPushButton *pushButton_4;
+    QPushButton *pushButton_dataBasePath;
     QLabel *label_50;
-    QLineEdit *lineEdit_29;
+    QLineEdit *lineEdit_dataBasePath;
 
     void setupUi(QWidget *Dialog_warnSound)
     {
@@ -67,24 +67,24 @@ public:
         label_17 = new QLabel(groupBox_10);
         label_17->setObjectName(QStringLiteral("label_17"));
         label_17->setGeometry(QRect(240, 30, 81, 17));
-        lineEdit_13 = new QLineEdit(groupBox_10);
-        lineEdit_13->setObjectName(QStringLiteral("lineEdit_13"));
-        lineEdit_13->setGeometry(QRect(100, 26, 91, 21));
-        lineEdit_26 = new QLineEdit(groupBox_10);
-        lineEdit_26->setObjectName(QStringLiteral("lineEdit_26"));
-        lineEdit_26->setGeometry(QRect(330, 30, 91, 21));
+        lineEdit_scanTime = new QLineEdit(groupBox_10);
+        lineEdit_scanTime->setObjectName(QStringLiteral("lineEdit_scanTime"));
+        lineEdit_scanTime->setGeometry(QRect(100, 26, 91, 21));
+        lineEdit_scanInterval = new QLineEdit(groupBox_10);
+        lineEdit_scanInterval->setObjectName(QStringLiteral("lineEdit_scanInterval"));
+        lineEdit_scanInterval->setGeometry(QRect(330, 30, 91, 21));
         label_18 = new QLabel(groupBox_10);
         label_18->setObjectName(QStringLiteral("label_18"));
         label_18->setGeometry(QRect(7, 67, 101, 20));
-        lineEdit_27 = new QLineEdit(groupBox_10);
-        lineEdit_27->setObjectName(QStringLiteral("lineEdit_27"));
-        lineEdit_27->setGeometry(QRect(100, 66, 91, 21));
+        lineEdit_serverOvertime = new QLineEdit(groupBox_10);
+        lineEdit_serverOvertime->setObjectName(QStringLiteral("lineEdit_serverOvertime"));
+        lineEdit_serverOvertime->setGeometry(QRect(100, 66, 91, 21));
         label_43 = new QLabel(groupBox_10);
         label_43->setObjectName(QStringLiteral("label_43"));
         label_43->setGeometry(QRect(210, 68, 111, 17));
-        lineEdit_28 = new QLineEdit(groupBox_10);
-        lineEdit_28->setObjectName(QStringLiteral("lineEdit_28"));
-        lineEdit_28->setGeometry(QRect(330, 66, 91, 21));
+        lineEdit_emailSendOvertime = new QLineEdit(groupBox_10);
+        lineEdit_emailSendOvertime->setObjectName(QStringLiteral("lineEdit_emailSendOvertime"));
+        lineEdit_emailSendOvertime->setGeometry(QRect(330, 66, 91, 21));
         comboBox_5 = new QComboBox(groupBox_10);
         comboBox_5->setObjectName(QStringLiteral("comboBox_5"));
         comboBox_5->setGeometry(QRect(10, 100, 181, 27));
@@ -109,15 +109,15 @@ public:
         groupBox_11->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         groupBox_11->setFlat(false);
         groupBox_11->setCheckable(false);
-        pushButton_4 = new QPushButton(groupBox_11);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setGeometry(QRect(350, 30, 31, 21));
+        pushButton_dataBasePath = new QPushButton(groupBox_11);
+        pushButton_dataBasePath->setObjectName(QStringLiteral("pushButton_dataBasePath"));
+        pushButton_dataBasePath->setGeometry(QRect(350, 30, 31, 21));
         label_50 = new QLabel(groupBox_11);
         label_50->setObjectName(QStringLiteral("label_50"));
         label_50->setGeometry(QRect(17, 33, 91, 17));
-        lineEdit_29 = new QLineEdit(groupBox_11);
-        lineEdit_29->setObjectName(QStringLiteral("lineEdit_29"));
-        lineEdit_29->setGeometry(QRect(110, 30, 231, 21));
+        lineEdit_dataBasePath = new QLineEdit(groupBox_11);
+        lineEdit_dataBasePath->setObjectName(QStringLiteral("lineEdit_dataBasePath"));
+        lineEdit_dataBasePath->setGeometry(QRect(110, 30, 231, 21));
 
         retranslateUi(Dialog_warnSound);
         QObject::connect(buttonBox, SIGNAL(accepted()), Dialog_warnSound, SLOT(accept()));
@@ -145,7 +145,7 @@ public:
         label_48->setText(QApplication::translate("Dialog_warnSound", "s", 0));
         label_49->setText(QApplication::translate("Dialog_warnSound", "s", 0));
         groupBox_11->setTitle(QApplication::translate("Dialog_warnSound", "\346\225\260\346\215\256\345\272\223\350\256\276\347\275\256", 0));
-        pushButton_4->setText(QApplication::translate("Dialog_warnSound", "...", 0));
+        pushButton_dataBasePath->setText(QApplication::translate("Dialog_warnSound", "...", 0));
         label_50->setText(QApplication::translate("Dialog_warnSound", "\346\225\260\346\215\256\345\272\223\344\275\215\347\275\256\357\274\232", 0));
     } // retranslateUi
 

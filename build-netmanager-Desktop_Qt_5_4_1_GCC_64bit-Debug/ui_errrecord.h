@@ -30,15 +30,15 @@ public:
     QListWidget *listWidget;
     QFrame *frame;
     QLabel *label_2;
-    QLineEdit *lineEdit;
-    QLineEdit *lineEdit_3;
+    QLineEdit *lineEdit_netName;
+    QLineEdit *lineEdit_errTimeEnd;
     QLabel *label;
     QLabel *label_3;
     QPushButton *pushButton_search;
     QLabel *label_4;
-    QLineEdit *lineEdit_2;
-    QComboBox *comboBox_2;
-    QComboBox *comboBox;
+    QLineEdit *lineEdit_errTimeBegin;
+    QComboBox *comboBox_errClass;
+    QComboBox *comboBox_netClass;
     QLabel *label_5;
 
     void setupUi(QWidget *errRecord)
@@ -63,12 +63,12 @@ public:
         label_2 = new QLabel(frame);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(30, 44, 71, 17));
-        lineEdit = new QLineEdit(frame);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(120, 44, 251, 21));
-        lineEdit_3 = new QLineEdit(frame);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(260, 6, 113, 21));
+        lineEdit_netName = new QLineEdit(frame);
+        lineEdit_netName->setObjectName(QStringLiteral("lineEdit_netName"));
+        lineEdit_netName->setGeometry(QRect(120, 44, 251, 21));
+        lineEdit_errTimeEnd = new QLineEdit(frame);
+        lineEdit_errTimeEnd->setObjectName(QStringLiteral("lineEdit_errTimeEnd"));
+        lineEdit_errTimeEnd->setGeometry(QRect(260, 6, 113, 21));
         label = new QLabel(frame);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(381, 6, 81, 20));
@@ -81,15 +81,15 @@ public:
         label_4 = new QLabel(frame);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(240, 6, 21, 17));
-        lineEdit_2 = new QLineEdit(frame);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(120, 6, 113, 21));
-        comboBox_2 = new QComboBox(frame);
-        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
-        comboBox_2->setGeometry(QRect(460, 41, 85, 21));
-        comboBox = new QComboBox(frame);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(460, 4, 85, 21));
+        lineEdit_errTimeBegin = new QLineEdit(frame);
+        lineEdit_errTimeBegin->setObjectName(QStringLiteral("lineEdit_errTimeBegin"));
+        lineEdit_errTimeBegin->setGeometry(QRect(120, 6, 113, 21));
+        comboBox_errClass = new QComboBox(frame);
+        comboBox_errClass->setObjectName(QStringLiteral("comboBox_errClass"));
+        comboBox_errClass->setGeometry(QRect(460, 41, 85, 21));
+        comboBox_netClass = new QComboBox(frame);
+        comboBox_netClass->setObjectName(QStringLiteral("comboBox_netClass"));
+        comboBox_netClass->setGeometry(QRect(460, 4, 85, 21));
         label_5 = new QLabel(frame);
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setGeometry(QRect(380, 44, 71, 17));
@@ -107,14 +107,14 @@ public:
         label_3->setText(QApplication::translate("errRecord", "\346\237\245\350\257\242\346\227\245\346\234\237\357\274\232", 0));
         pushButton_search->setText(QApplication::translate("errRecord", "\346\237\245\350\257\242", 0));
         label_4->setText(QApplication::translate("errRecord", "\357\275\236", 0));
-        comboBox_2->clear();
-        comboBox_2->insertItems(0, QStringList()
+        comboBox_errClass->clear();
+        comboBox_errClass->insertItems(0, QStringList()
          << QApplication::translate("errRecord", "\346\211\200\346\234\211\346\225\205\351\232\234", 0)
          << QApplication::translate("errRecord", "\345\267\262\345\244\204\347\220\206\346\225\205\351\232\234", 0)
          << QApplication::translate("errRecord", "\346\234\252\345\244\204\347\220\206\346\225\205\351\232\234", 0)
         );
-        comboBox->clear();
-        comboBox->insertItems(0, QStringList()
+        comboBox_netClass->clear();
+        comboBox_netClass->insertItems(0, QStringList()
          << QApplication::translate("errRecord", "\345\210\206\347\261\273", 0)
          << QApplication::translate("errRecord", "\346\211\200\346\234\211\346\225\205\351\232\234", 0)
         );

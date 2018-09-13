@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -29,7 +29,9 @@ SOURCES += main.cpp\
     setwechatcount.cpp \
     reportemailrecord.cpp \
     reportmsgrecord.cpp \
-    reportwechatrecord.cpp
+    reportwechatrecord.cpp \
+    config.cpp \
+    log.cpp
 
 HEADERS  += mainwindow.h \
     netlist.h \
@@ -47,7 +49,9 @@ HEADERS  += mainwindow.h \
     setwechatcount.h \
     reportemailrecord.h \
     reportmsgrecord.h \
-    reportwechatrecord.h
+    reportwechatrecord.h \
+    config.h \
+    log.h
 
 FORMS    += mainwindow.ui \
     netlist.ui \

@@ -28,12 +28,12 @@ class Ui_addNetgroup
 {
 public:
     QGroupBox *groupBox;
-    QTextEdit *textEdit;
+    QTextEdit *textEdit_describe;
     QDialogButtonBox *buttonBox;
     QLabel *label;
-    QComboBox *comboBox;
+    QComboBox *comboBox_class;
     QLabel *label_2;
-    QLineEdit *lineEdit_name;
+    QLineEdit *lineEdit_newName;
 
     void setupUi(QWidget *addNetgroup)
     {
@@ -48,9 +48,9 @@ public:
         groupBox = new QGroupBox(addNetgroup);
         groupBox->setObjectName(QStringLiteral("groupBox"));
         groupBox->setGeometry(QRect(250, 180, 351, 181));
-        textEdit = new QTextEdit(groupBox);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(0, 20, 331, 151));
+        textEdit_describe = new QTextEdit(groupBox);
+        textEdit_describe->setObjectName(QStringLiteral("textEdit_describe"));
+        textEdit_describe->setGeometry(QRect(0, 20, 331, 151));
         buttonBox = new QDialogButtonBox(addNetgroup);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setGeometry(QRect(400, 370, 176, 27));
@@ -58,15 +58,15 @@ public:
         label = new QLabel(addNetgroup);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(460, 140, 75, 20));
-        comboBox = new QComboBox(addNetgroup);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(520, 140, 60, 21));
+        comboBox_class = new QComboBox(addNetgroup);
+        comboBox_class->setObjectName(QStringLiteral("comboBox_class"));
+        comboBox_class->setGeometry(QRect(520, 140, 60, 21));
         label_2 = new QLabel(addNetgroup);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(250, 140, 71, 20));
-        lineEdit_name = new QLineEdit(addNetgroup);
-        lineEdit_name->setObjectName(QStringLiteral("lineEdit_name"));
-        lineEdit_name->setGeometry(QRect(310, 140, 146, 21));
+        lineEdit_newName = new QLineEdit(addNetgroup);
+        lineEdit_newName->setObjectName(QStringLiteral("lineEdit_newName"));
+        lineEdit_newName->setGeometry(QRect(310, 140, 146, 21));
 
         retranslateUi(addNetgroup);
 
@@ -78,8 +78,8 @@ public:
         addNetgroup->setWindowTitle(QApplication::translate("addNetgroup", "Form", 0));
         groupBox->setTitle(QApplication::translate("addNetgroup", "\346\217\217\350\277\260", 0));
         label->setText(QApplication::translate("addNetgroup", "\346\211\200\345\261\236\347\273\204\357\274\232", 0));
-        comboBox->clear();
-        comboBox->insertItems(0, QStringList()
+        comboBox_class->clear();
+        comboBox_class->insertItems(0, QStringList()
          << QApplication::translate("addNetgroup", "\345\250\261\344\271\220", 0)
          << QApplication::translate("addNetgroup", "\346\220\234\347\264\242", 0)
          << QApplication::translate("addNetgroup", "\350\247\206\351\242\221", 0)

@@ -15,6 +15,9 @@ public:
     explicit netAdd(QWidget *parent = 0);
     ~netAdd();
 
+private slots:
+    void on_buttonBox_accepted();
+
 private:
     Ui::netAdd *ui;
 };

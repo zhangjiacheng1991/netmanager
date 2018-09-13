@@ -28,7 +28,7 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QComboBox" name="comboBox_5">
+   <widget class="QComboBox" name="comboBox_operator">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -53,7 +53,7 @@
      </property>
     </item>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_28">
+   <widget class="QLineEdit" name="lineEdit_phone">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -63,7 +63,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_29">
+   <widget class="QLineEdit" name="lineEdit_sendOvertime">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -86,7 +86,7 @@
      <string>s</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_7">
+   <widget class="QTextEdit" name="textEdit_others">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -135,7 +135,7 @@
      <string>运营商：</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_51">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -148,7 +148,7 @@
      <string>发送超时：</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_30">
+   <widget class="QLineEdit" name="lineEdit_sendinterval">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -185,7 +185,7 @@
     </property>
    </widget>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>140</x>

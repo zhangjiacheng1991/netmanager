@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -43,7 +43,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QTextEdit" name="textEdit_2">
+      <widget class="QTextEdit" name="textEdit_others">
        <property name="geometry">
         <rect>
          <x>100</x>
@@ -53,7 +53,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_3">
+      <widget class="QLineEdit" name="lineEdit_wechat">
        <property name="geometry">
         <rect>
          <x>100</x>
@@ -89,7 +89,7 @@
         <string>密码：</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_13">
+      <widget class="QLineEdit" name="lineEdit_pwd">
        <property name="geometry">
         <rect>
          <x>280</x>
@@ -128,7 +128,7 @@
         <string>间隔时间：</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_26">
+      <widget class="QLineEdit" name="lineEdit_timeInterval">
        <property name="geometry">
         <rect>
          <x>100</x>
@@ -177,7 +177,7 @@
         <string>超时：</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_27">
+      <widget class="QLineEdit" name="lineEdit_timeout">
        <property name="geometry">
         <rect>
          <x>290</x>
@@ -187,7 +187,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QRadioButton" name="radioButton_2">
+      <widget class="QRadioButton" name="radioButton_handStart">
        <property name="geometry">
         <rect>
          <x>160</x>
@@ -200,7 +200,7 @@
         <string>手动启动</string>
        </property>
       </widget>
-      <widget class="QRadioButton" name="radioButton">
+      <widget class="QRadioButton" name="radioButton_autoStart">
        <property name="geometry">
         <rect>
          <x>20</x>

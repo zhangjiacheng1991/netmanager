@@ -1,16 +1,32 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
+#include <QMessageBox>
+#include <QDebug>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->scrollArea;
+    //初始化数据库
+    db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setDatabaseName("netmanager");
+    db.setHostName("127.0.0.1");
+    db.setPort(3306);
+    db.setUserName("root");
+    db.setPassword("123456");
+    if(!db.open()){
+        QMessageBox(QMessageBox::NoIcon,"错误","打开数据库失败！");
+    }
+    qDebug() << "打开数据库成功！";
+
+
     ui->label->setText("网站列表");
     nManager = new netmanager(ui->scrollArea);
- //   nManager->setMaximumWidth(ui->scrollArea->width());
-  //  nManager->setMaximumHeight(ui->scrollArea->height());
+//    qDebug() << ui->scrollAreaWidgetContents->geometry().x();
+ //   qDebug() << ui->scrollAreaWidgetContents->geometry().y();
+ //   nManager->setGeometry(155,46,ui->scrollArea->geometry().width(),ui->scrollArea->geometry().height());
     nManager->nList->show();
     newWidget = nManager->nList;
     sConfig = new setConfig(ui->scrollArea);

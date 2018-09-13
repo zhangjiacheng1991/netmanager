@@ -51,7 +51,7 @@
      <string>网站名     :</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="lineEdit_netName">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -61,7 +61,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="lineEdit_reportTimeEnd">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -123,7 +123,7 @@
      <string>～</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="lineEdit_reportTimeBegin">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -133,7 +133,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="comboBox_netClass">
     <property name="geometry">
      <rect>
       <x>460</x>
@@ -166,7 +166,7 @@
      <string>邮箱 :</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_4">
+   <widget class="QLineEdit" name="lineEdit_email">
     <property name="geometry">
      <rect>
       <x>420</x>

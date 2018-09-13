@@ -67,7 +67,7 @@
      <string>扫描间隔：</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_13">
+   <widget class="QLineEdit" name="lineEdit_scanTime">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -77,7 +77,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_26">
+   <widget class="QLineEdit" name="lineEdit_scanInterval">
     <property name="geometry">
      <rect>
       <x>330</x>
@@ -100,7 +100,7 @@
      <string>服务器超时：</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_27">
+   <widget class="QLineEdit" name="lineEdit_serverOvertime">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -123,7 +123,7 @@
      <string>邮件发送超时：</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_28">
+   <widget class="QLineEdit" name="lineEdit_emailSendOvertime">
     <property name="geometry">
      <rect>
       <x>330</x>
@@ -240,7 +240,7 @@
    <property name="checkable">
     <bool>false</bool>
    </property>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="pushButton_dataBasePath">
     <property name="geometry">
      <rect>
       <x>350</x>
@@ -266,7 +266,7 @@
      <string>数据库位置：</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_29">
+   <widget class="QLineEdit" name="lineEdit_dataBasePath">
     <property name="geometry">
      <rect>
       <x>110</x>

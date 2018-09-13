@@ -15,6 +15,13 @@ public:
     explicit netList(QWidget *parent = 0);
     ~netList();
 
+private slots:
+    void on_lineEdit_2_textChanged(const QString &arg1);
+
+    void on_pushButton_sreach_clicked();
+
+    void on_pushButton_refer_clicked();
+
 private:
     Ui::netList *ui;
 };

@@ -31,7 +31,7 @@
    <property name="title">
     <string>描述</string>
    </property>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="textEdit_describe">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -68,7 +68,7 @@
     <string>所属组：</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="comboBox_class">
    <property name="geometry">
     <rect>
      <x>520</x>
@@ -106,7 +106,7 @@
     <string>新类名：</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_name">
+  <widget class="QLineEdit" name="lineEdit_newName">
    <property name="geometry">
     <rect>
      <x>310</x>

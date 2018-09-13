@@ -35,7 +35,7 @@ public:
         if (netmanager->objectName().isEmpty())
             netmanager->setObjectName(QStringLiteral("netmanager"));
         netmanager->setEnabled(true);
-        netmanager->resize(832, 495);
+        netmanager->resize(832, 606);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);

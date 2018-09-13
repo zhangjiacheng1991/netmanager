@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
 CXXFLAGS      = -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
-INCPATH       = -I../netmanager -I. -I../../Qt5.4.1/5.4/gcc_64/include -I../../Qt5.4.1/5.4/gcc_64/include/QtWidgets -I../../Qt5.4.1/5.4/gcc_64/include/QtGui -I../../Qt5.4.1/5.4/gcc_64/include/QtCore -I. -I. -I../../Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../netmanager -I. -I../../Qt5.4.1/5.4/gcc_64/include -I../../Qt5.4.1/5.4/gcc_64/include/QtWidgets -I../../Qt5.4.1/5.4/gcc_64/include/QtGui -I../../Qt5.4.1/5.4/gcc_64/include/QtNetwork -I../../Qt5.4.1/5.4/gcc_64/include/QtSql -I../../Qt5.4.1/5.4/gcc_64/include/QtCore -I. -I. -I../../Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/tarena/Qt5.4.1/5.4/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = netmanager1.0.0
 DISTDIR = /home/tarena/work/netmanager/.tmp/netmanager1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/tarena/Qt5.4.1/5.4/gcc_64 -Wl,-rpath,/home/tarena/Qt5.4.1/5.4/gcc_64/lib
-LIBS          = $(SUBLIBS) -L/home/tarena/Qt5.4.1/5.4/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/home/tarena/Qt5.4.1/5.4/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Sql -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -65,7 +65,9 @@ SOURCES       = ../netmanager/main.cpp \
 		../netmanager/setwechatcount.cpp \
 		../netmanager/reportemailrecord.cpp \
 		../netmanager/reportmsgrecord.cpp \
-		../netmanager/reportwechatrecord.cpp moc_mainwindow.cpp \
+		../netmanager/reportwechatrecord.cpp \
+		../netmanager/config.cpp \
+		../netmanager/log.cpp moc_mainwindow.cpp \
 		moc_netlist.cpp \
 		moc_netadd.cpp \
 		moc_setconfig.cpp \
@@ -100,6 +102,8 @@ OBJECTS       = main.o \
 		reportemailrecord.o \
 		reportmsgrecord.o \
 		reportwechatrecord.o \
+		config.o \
+		log.o \
 		moc_mainwindow.o \
 		moc_netlist.o \
 		moc_netadd.o \
@@ -252,7 +256,9 @@ DIST          = ../../Qt5.4.1/5.4/gcc_64/mkspecs/features/spec_pre.prf \
 		../netmanager/setwechatcount.h \
 		../netmanager/reportemailrecord.h \
 		../netmanager/reportmsgrecord.h \
-		../netmanager/reportwechatrecord.h ../netmanager/main.cpp \
+		../netmanager/reportwechatrecord.h \
+		../netmanager/config.h \
+		../netmanager/log.h ../netmanager/main.cpp \
 		../netmanager/mainwindow.cpp \
 		../netmanager/netlist.cpp \
 		../netmanager/netadd.cpp \
@@ -269,7 +275,9 @@ DIST          = ../../Qt5.4.1/5.4/gcc_64/mkspecs/features/spec_pre.prf \
 		../netmanager/setwechatcount.cpp \
 		../netmanager/reportemailrecord.cpp \
 		../netmanager/reportmsgrecord.cpp \
-		../netmanager/reportwechatrecord.cpp
+		../netmanager/reportwechatrecord.cpp \
+		../netmanager/config.cpp \
+		../netmanager/log.cpp
 QMAKE_TARGET  = netmanager
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = netmanager
@@ -422,7 +430,9 @@ Makefile: ../netmanager/netmanager.pro ../../Qt5.4.1/5.4/gcc_64/mkspecs/linux-g+
 		../netmanager/netmanager.pro \
 		/home/tarena/Qt5.4.1/5.4/gcc_64/lib/libQt5Widgets.prl \
 		/home/tarena/Qt5.4.1/5.4/gcc_64/lib/libQt5Gui.prl \
-		/home/tarena/Qt5.4.1/5.4/gcc_64/lib/libQt5Core.prl
+		/home/tarena/Qt5.4.1/5.4/gcc_64/lib/libQt5Core.prl \
+		/home/tarena/Qt5.4.1/5.4/gcc_64/lib/libQt5Network.prl \
+		/home/tarena/Qt5.4.1/5.4/gcc_64/lib/libQt5Sql.prl
 	$(QMAKE) -spec linux-g++ CONFIG+=debug -o Makefile ../netmanager/netmanager.pro
 ../../Qt5.4.1/5.4/gcc_64/mkspecs/features/spec_pre.prf:
 ../../Qt5.4.1/5.4/gcc_64/mkspecs/common/shell-unix.conf:
@@ -547,6 +557,8 @@ Makefile: ../netmanager/netmanager.pro ../../Qt5.4.1/5.4/gcc_64/mkspecs/linux-g+
 /home/tarena/Qt5.4.1/5.4/gcc_64/lib/libQt5Widgets.prl:
 /home/tarena/Qt5.4.1/5.4/gcc_64/lib/libQt5Gui.prl:
 /home/tarena/Qt5.4.1/5.4/gcc_64/lib/libQt5Core.prl:
+/home/tarena/Qt5.4.1/5.4/gcc_64/lib/libQt5Network.prl:
+/home/tarena/Qt5.4.1/5.4/gcc_64/lib/libQt5Sql.prl:
 qmake: FORCE
 	@$(QMAKE) -spec linux-g++ CONFIG+=debug -o Makefile ../netmanager/netmanager.pro
 
@@ -561,8 +573,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../netmanager/mainwindow.h ../netmanager/netlist.h ../netmanager/netadd.h ../netmanager/setconfig.h ../netmanager/report.h ../netmanager/netmanager.h ../netmanager/addnetgroup.h ../netmanager/errrecord.h ../netmanager/emailreport.h ../netmanager/dialog_warnsound.h ../netmanager/emailset.h ../netmanager/setmsgcount.h ../netmanager/setemailcount.h ../netmanager/setwechatcount.h ../netmanager/reportemailrecord.h ../netmanager/reportmsgrecord.h ../netmanager/reportwechatrecord.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../netmanager/main.cpp ../netmanager/mainwindow.cpp ../netmanager/netlist.cpp ../netmanager/netadd.cpp ../netmanager/setconfig.cpp ../netmanager/report.cpp ../netmanager/netmanager.cpp ../netmanager/addnetgroup.cpp ../netmanager/errrecord.cpp ../netmanager/emailreport.cpp ../netmanager/dialog_warnsound.cpp ../netmanager/emailset.cpp ../netmanager/setmsgcount.cpp ../netmanager/setemailcount.cpp ../netmanager/setwechatcount.cpp ../netmanager/reportemailrecord.cpp ../netmanager/reportmsgrecord.cpp ../netmanager/reportwechatrecord.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../netmanager/mainwindow.h ../netmanager/netlist.h ../netmanager/netadd.h ../netmanager/setconfig.h ../netmanager/report.h ../netmanager/netmanager.h ../netmanager/addnetgroup.h ../netmanager/errrecord.h ../netmanager/emailreport.h ../netmanager/dialog_warnsound.h ../netmanager/emailset.h ../netmanager/setmsgcount.h ../netmanager/setemailcount.h ../netmanager/setwechatcount.h ../netmanager/reportemailrecord.h ../netmanager/reportmsgrecord.h ../netmanager/reportwechatrecord.h ../netmanager/config.h ../netmanager/log.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../netmanager/main.cpp ../netmanager/mainwindow.cpp ../netmanager/netlist.cpp ../netmanager/netadd.cpp ../netmanager/setconfig.cpp ../netmanager/report.cpp ../netmanager/netmanager.cpp ../netmanager/addnetgroup.cpp ../netmanager/errrecord.cpp ../netmanager/emailreport.cpp ../netmanager/dialog_warnsound.cpp ../netmanager/emailset.cpp ../netmanager/setmsgcount.cpp ../netmanager/setemailcount.cpp ../netmanager/setwechatcount.cpp ../netmanager/reportemailrecord.cpp ../netmanager/reportmsgrecord.cpp ../netmanager/reportwechatrecord.cpp ../netmanager/config.cpp ../netmanager/log.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../netmanager/mainwindow.ui ../netmanager/netlist.ui ../netmanager/netadd.ui ../netmanager/setconfig.ui ../netmanager/report.ui ../netmanager/netmanager.ui ../netmanager/addnetgroup.ui ../netmanager/errrecord.ui ../netmanager/emailreport.ui ../netmanager/dialog_warnsound.ui ../netmanager/emailset.ui ../netmanager/setmsgcount.ui ../netmanager/setemailcount.ui ../netmanager/setwechatcount.ui ../netmanager/reportemailrecord.ui ../netmanager/reportmsgrecord.ui ../netmanager/reportwechatrecord.ui $(DISTDIR)/
 
 
@@ -708,8 +720,11 @@ moc_mainwindow.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QMainWindow \
 		../netmanager/setemailcount.h \
 		../netmanager/setwechatcount.h \
 		../netmanager/dialog_warnsound.h \
+		../netmanager/reportemailrecord.h \
+		../netmanager/reportmsgrecord.h \
+		../netmanager/reportwechatrecord.h \
 		../netmanager/mainwindow.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/mainwindow.h -o moc_mainwindow.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/mainwindow.h -o moc_mainwindow.cpp
 
 moc_netlist.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -814,7 +829,7 @@ moc_netlist.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/netlist.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/netlist.h -o moc_netlist.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/netlist.h -o moc_netlist.cpp
 
 moc_netadd.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -919,7 +934,7 @@ moc_netadd.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/netadd.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/netadd.h -o moc_netadd.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/netadd.h -o moc_netadd.cpp
 
 moc_setconfig.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -1024,7 +1039,7 @@ moc_setconfig.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/setconfig.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/setconfig.h -o moc_setconfig.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/setconfig.h -o moc_setconfig.cpp
 
 moc_report.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -1133,7 +1148,7 @@ moc_report.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
 		../netmanager/emailreport.h \
 		../netmanager/report.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/report.h -o moc_report.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/report.h -o moc_report.cpp
 
 moc_netmanager.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -1245,7 +1260,7 @@ moc_netmanager.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
 		../netmanager/netmanager.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/netmanager.h -o moc_netmanager.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/netmanager.h -o moc_netmanager.cpp
 
 moc_addnetgroup.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -1350,7 +1365,7 @@ moc_addnetgroup.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/addnetgroup.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/addnetgroup.h -o moc_addnetgroup.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/addnetgroup.h -o moc_addnetgroup.cpp
 
 moc_errrecord.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -1458,7 +1473,7 @@ moc_errrecord.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
 		../netmanager/errrecord.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/errrecord.h -o moc_errrecord.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/errrecord.h -o moc_errrecord.cpp
 
 moc_emailreport.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -1563,7 +1578,7 @@ moc_emailreport.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/emailreport.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/emailreport.h -o moc_emailreport.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/emailreport.h -o moc_emailreport.cpp
 
 moc_dialog_warnsound.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -1668,7 +1683,7 @@ moc_dialog_warnsound.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/dialog_warnsound.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/dialog_warnsound.h -o moc_dialog_warnsound.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/dialog_warnsound.h -o moc_dialog_warnsound.cpp
 
 moc_emailset.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -1773,7 +1788,7 @@ moc_emailset.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/emailset.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/emailset.h -o moc_emailset.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/emailset.h -o moc_emailset.cpp
 
 moc_setmsgcount.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -1878,7 +1893,7 @@ moc_setmsgcount.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/setmsgcount.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/setmsgcount.h -o moc_setmsgcount.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/setmsgcount.h -o moc_setmsgcount.cpp
 
 moc_setemailcount.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -1983,7 +1998,7 @@ moc_setemailcount.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/setemailcount.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/setemailcount.h -o moc_setemailcount.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/setemailcount.h -o moc_setemailcount.cpp
 
 moc_setwechatcount.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -2088,7 +2103,7 @@ moc_setwechatcount.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/setwechatcount.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/setwechatcount.h -o moc_setwechatcount.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/setwechatcount.h -o moc_setwechatcount.cpp
 
 moc_reportemailrecord.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -2193,7 +2208,7 @@ moc_reportemailrecord.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/reportemailrecord.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/reportemailrecord.h -o moc_reportemailrecord.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/reportemailrecord.h -o moc_reportemailrecord.cpp
 
 moc_reportmsgrecord.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -2298,7 +2313,7 @@ moc_reportmsgrecord.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/reportmsgrecord.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/reportmsgrecord.h -o moc_reportmsgrecord.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/reportmsgrecord.h -o moc_reportmsgrecord.cpp
 
 moc_reportwechatrecord.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -2403,7 +2418,7 @@ moc_reportwechatrecord.cpp: ../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		../netmanager/reportwechatrecord.h
-	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/reportwechatrecord.h -o moc_reportwechatrecord.cpp
+	/home/tarena/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/home/tarena/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/tarena/work/netmanager -I/home/tarena/Qt5.4.1/5.4/gcc_64/include -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtWidgets -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtGui -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtSql -I/home/tarena/Qt5.4.1/5.4/gcc_64/include/QtCore -I. ../netmanager/reportwechatrecord.h -o moc_reportwechatrecord.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -2591,6 +2606,9 @@ main.o: ../netmanager/main.cpp ../netmanager/mainwindow.h \
 		../netmanager/setemailcount.h \
 		../netmanager/setwechatcount.h \
 		../netmanager/dialog_warnsound.h \
+		../netmanager/reportemailrecord.h \
+		../netmanager/reportmsgrecord.h \
+		../netmanager/reportwechatrecord.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QApplication \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qapplication.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcoreapplication.h \
@@ -2720,6 +2738,9 @@ mainwindow.o: ../netmanager/mainwindow.cpp ../netmanager/mainwindow.h \
 		../netmanager/setemailcount.h \
 		../netmanager/setwechatcount.h \
 		../netmanager/dialog_warnsound.h \
+		../netmanager/reportemailrecord.h \
+		../netmanager/reportmsgrecord.h \
+		../netmanager/reportwechatrecord.h \
 		ui_mainwindow.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/QVariant \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QAction \
@@ -2734,11 +2755,12 @@ mainwindow.o: ../netmanager/mainwindow.cpp ../netmanager/mainwindow.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qinputmethod.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QButtonGroup \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHBoxLayout \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QGridLayout \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayout.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHBoxLayout \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -2758,7 +2780,6 @@ mainwindow.o: ../netmanager/mainwindow.cpp ../netmanager/mainwindow.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlabel.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLayout \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QMenu \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qmenu.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QMenuBar \
@@ -2777,7 +2798,11 @@ mainwindow.o: ../netmanager/mainwindow.cpp ../netmanager/mainwindow.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtoolbox.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QMessageBox \
 		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qmessagebox.h \
-		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdialog.h
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdialog.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtSql/QSqlDatabase \
+		../../Qt5.4.1/5.4/gcc_64/include/QtSql/qsqldatabase.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtSql/qsql.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../netmanager/mainwindow.cpp
 
 netlist.o: ../netmanager/netlist.cpp ../netmanager/netlist.h \
@@ -4881,7 +4906,55 @@ reportemailrecord.o: ../netmanager/reportemailrecord.cpp ../netmanager/reportema
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_reportemailrecord.h
+		ui_reportemailrecord.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/QVariant \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QAction \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qaction.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QApplication \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QButtonGroup \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QComboBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qcombobox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QFrame \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLabel \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o reportemailrecord.o ../netmanager/reportemailrecord.cpp
 
 reportmsgrecord.o: ../netmanager/reportmsgrecord.cpp ../netmanager/reportmsgrecord.h \
@@ -4987,7 +5060,55 @@ reportmsgrecord.o: ../netmanager/reportmsgrecord.cpp ../netmanager/reportmsgreco
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_reportmsgrecord.h
+		ui_reportmsgrecord.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/QVariant \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QAction \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qaction.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QApplication \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QButtonGroup \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QComboBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qcombobox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QFrame \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLabel \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o reportmsgrecord.o ../netmanager/reportmsgrecord.cpp
 
 reportwechatrecord.o: ../netmanager/reportwechatrecord.cpp ../netmanager/reportwechatrecord.h \
@@ -5093,8 +5214,62 @@ reportwechatrecord.o: ../netmanager/reportwechatrecord.cpp ../netmanager/reportw
 		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_reportwechatrecord.h
+		ui_reportwechatrecord.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/QVariant \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QAction \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qaction.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qicon.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QApplication \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QButtonGroup \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QComboBox \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qcombobox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QFrame \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QHeaderView \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qheaderview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLabel \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt5.4.1/5.4/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o reportwechatrecord.o ../netmanager/reportwechatrecord.cpp
+
+config.o: ../netmanager/config.cpp ../netmanager/config.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o config.o ../netmanager/config.cpp
+
+log.o: ../netmanager/log.cpp ../netmanager/log.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o log.o ../netmanager/log.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

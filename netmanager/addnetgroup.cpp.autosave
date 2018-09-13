@@ -1,0 +1,20 @@
+#include "addnetgroup.h"
+#include "ui_addnetgroup.h"
+#include <QString>
+addNetgroup::addNetgroup(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::addNetgroup)
+{
+    ui->setupUi(this);
+}
+
+addNetgroup::~addNetgroup()
+{
+    delete ui;
+}
+
+void addNetgroup::on_buttonBox_accepted()
+{
+    QString name = ui->lineEdit_newName->text();
+    QString 
+}

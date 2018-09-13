@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QWidget>
+#include <QSqlDatabase>
 #include "netmanager.h"
 #include "setconfig.h"
 #include "report.h"
@@ -77,6 +78,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QSqlDatabase db;
     netmanager* nManager;
     QWidget* newWidget;
     setConfig* sConfig;

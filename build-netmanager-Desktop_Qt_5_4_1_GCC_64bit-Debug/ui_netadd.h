@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
@@ -28,9 +29,9 @@ class Ui_netAdd
 public:
     QFrame *frame_3;
     QFrame *frame_4;
-    QComboBox *comboBox_2;
-    QLineEdit *lineEdit_2;
-    QLineEdit *lineEdit_3;
+    QComboBox *comboBox_netClass;
+    QLineEdit *lineEdit_netName;
+    QLineEdit *lineEdit_netAdress;
     QLabel *label_3;
     QLabel *label;
     QLabel *label_2;
@@ -41,10 +42,11 @@ public:
     QLabel *label_5;
     QLabel *label_8;
     QLabel *label_6;
-    QComboBox *comboBox;
-    QLineEdit *lineEdit_Statud;
-    QLineEdit *lineEdit_Care;
-    QLineEdit *lineEdit_Port;
+    QComboBox *comboBox_warnWay;
+    QLineEdit *lineEdit_keyworld;
+    QLineEdit *lineEdit_port;
+    QLineEdit *lineEdit_status;
+    QDialogButtonBox *buttonBox;
 
     void setupUi(QWidget *netAdd)
     {
@@ -75,15 +77,15 @@ public:
         frame_4->setMinimumSize(QSize(0, 30));
         frame_4->setFrameShape(QFrame::Panel);
         frame_4->setFrameShadow(QFrame::Sunken);
-        comboBox_2 = new QComboBox(frame_4);
-        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
-        comboBox_2->setGeometry(QRect(338, 6, 131, 27));
-        lineEdit_2 = new QLineEdit(frame_4);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(101, 10, 146, 27));
-        lineEdit_3 = new QLineEdit(frame_4);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(100, 60, 311, 27));
+        comboBox_netClass = new QComboBox(frame_4);
+        comboBox_netClass->setObjectName(QStringLiteral("comboBox_netClass"));
+        comboBox_netClass->setGeometry(QRect(338, 6, 131, 27));
+        lineEdit_netName = new QLineEdit(frame_4);
+        lineEdit_netName->setObjectName(QStringLiteral("lineEdit_netName"));
+        lineEdit_netName->setGeometry(QRect(101, 10, 146, 27));
+        lineEdit_netAdress = new QLineEdit(frame_4);
+        lineEdit_netAdress->setObjectName(QStringLiteral("lineEdit_netAdress"));
+        lineEdit_netAdress->setGeometry(QRect(100, 60, 311, 27));
         label_3 = new QLabel(frame_4);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(23, 60, 45, 20));
@@ -123,20 +125,24 @@ public:
         label_6 = new QLabel(frame);
         label_6->setObjectName(QStringLiteral("label_6"));
         label_6->setGeometry(QRect(237, 35, 74, 20));
-        comboBox = new QComboBox(frame);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(94, 11, 91, 21));
-        lineEdit_Statud = new QLineEdit(frame);
-        lineEdit_Statud->setObjectName(QStringLiteral("lineEdit_Statud"));
-        lineEdit_Statud->setGeometry(QRect(320, 10, 81, 20));
-        sizePolicy.setHeightForWidth(lineEdit_Statud->sizePolicy().hasHeightForWidth());
-        lineEdit_Statud->setSizePolicy(sizePolicy);
-        lineEdit_Care = new QLineEdit(frame);
-        lineEdit_Care->setObjectName(QStringLiteral("lineEdit_Care"));
-        lineEdit_Care->setGeometry(QRect(94, 38, 91, 20));
-        lineEdit_Port = new QLineEdit(frame);
-        lineEdit_Port->setObjectName(QStringLiteral("lineEdit_Port"));
-        lineEdit_Port->setGeometry(QRect(320, 36, 81, 20));
+        comboBox_warnWay = new QComboBox(frame);
+        comboBox_warnWay->setObjectName(QStringLiteral("comboBox_warnWay"));
+        comboBox_warnWay->setGeometry(QRect(94, 11, 91, 21));
+        lineEdit_keyworld = new QLineEdit(frame);
+        lineEdit_keyworld->setObjectName(QStringLiteral("lineEdit_keyworld"));
+        lineEdit_keyworld->setGeometry(QRect(320, 10, 81, 20));
+        sizePolicy.setHeightForWidth(lineEdit_keyworld->sizePolicy().hasHeightForWidth());
+        lineEdit_keyworld->setSizePolicy(sizePolicy);
+        lineEdit_port = new QLineEdit(frame);
+        lineEdit_port->setObjectName(QStringLiteral("lineEdit_port"));
+        lineEdit_port->setGeometry(QRect(94, 38, 91, 20));
+        lineEdit_status = new QLineEdit(frame);
+        lineEdit_status->setObjectName(QStringLiteral("lineEdit_status"));
+        lineEdit_status->setGeometry(QRect(320, 36, 81, 20));
+        buttonBox = new QDialogButtonBox(netAdd);
+        buttonBox->setObjectName(QStringLiteral("buttonBox"));
+        buttonBox->setGeometry(QRect(470, 340, 176, 27));
+        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
         retranslateUi(netAdd);
 
@@ -146,10 +152,10 @@ public:
     void retranslateUi(QWidget *netAdd)
     {
         netAdd->setWindowTitle(QApplication::translate("netAdd", "Form", 0));
-        comboBox_2->clear();
-        comboBox_2->insertItems(0, QStringList()
-         << QApplication::translate("netAdd", "\345\210\206\347\261\2731", 0)
-         << QApplication::translate("netAdd", "\345\210\206\347\261\2732", 0)
+        comboBox_netClass->clear();
+        comboBox_netClass->insertItems(0, QStringList()
+         << QApplication::translate("netAdd", "\351\202\256\347\256\261", 0)
+         << QApplication::translate("netAdd", "\346\220\234\347\264\242", 0)
          << QApplication::translate("netAdd", "\350\207\252\345\256\232\344\271\211\346\267\273\345\212\240", 0)
         );
         label_3->setText(QApplication::translate("netAdd", "\347\275\221\345\235\200\357\274\232", 0));
@@ -160,14 +166,15 @@ public:
         label_5->setText(QApplication::translate("netAdd", "\347\253\257     \345\217\243   \357\274\232", 0));
         label_8->setText(QApplication::translate("netAdd", "\346\212\245\350\255\246\346\226\271\345\274\217\357\274\232", 0));
         label_6->setText(QApplication::translate("netAdd", "\347\212\266\346\200\201\347\240\201    \357\274\232", 0));
-        comboBox->clear();
-        comboBox->insertItems(0, QStringList()
+        comboBox_warnWay->clear();
+        comboBox_warnWay->insertItems(0, QStringList()
          << QApplication::translate("netAdd", "\351\202\256\347\256\261", 0)
          << QApplication::translate("netAdd", "\346\211\213\346\234\272 ", 0)
+         << QApplication::translate("netAdd", "\344\274\201\344\270\232\345\276\256\344\277\241", 0)
         );
-        lineEdit_Statud->setText(QApplication::translate("netAdd", "200", 0));
-        lineEdit_Care->setText(QString());
-        lineEdit_Port->setText(QApplication::translate("netAdd", "80", 0));
+        lineEdit_keyworld->setText(QApplication::translate("netAdd", "200", 0));
+        lineEdit_port->setText(QString());
+        lineEdit_status->setText(QApplication::translate("netAdd", "80", 0));
     } // retranslateUi
 
 };

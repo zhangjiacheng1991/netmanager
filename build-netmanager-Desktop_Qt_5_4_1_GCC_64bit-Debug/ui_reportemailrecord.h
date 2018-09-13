@@ -30,16 +30,16 @@ public:
     QListView *listView;
     QFrame *frame;
     QLabel *label_2;
-    QLineEdit *lineEdit;
-    QLineEdit *lineEdit_3;
+    QLineEdit *lineEdit_netName;
+    QLineEdit *lineEdit_reportTimeEnd;
     QLabel *label;
     QLabel *label_3;
     QPushButton *pushButton_search;
     QLabel *label_4;
-    QLineEdit *lineEdit_2;
-    QComboBox *comboBox;
+    QLineEdit *lineEdit_reportTimeBegin;
+    QComboBox *comboBox_netClass;
     QLabel *label_5;
-    QLineEdit *lineEdit_4;
+    QLineEdit *lineEdit_email;
 
     void setupUi(QWidget *reportEmailRecord)
     {
@@ -57,12 +57,12 @@ public:
         label_2 = new QLabel(frame);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(30, 44, 71, 17));
-        lineEdit = new QLineEdit(frame);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(120, 44, 251, 21));
-        lineEdit_3 = new QLineEdit(frame);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(260, 6, 113, 21));
+        lineEdit_netName = new QLineEdit(frame);
+        lineEdit_netName->setObjectName(QStringLiteral("lineEdit_netName"));
+        lineEdit_netName->setGeometry(QRect(120, 44, 251, 21));
+        lineEdit_reportTimeEnd = new QLineEdit(frame);
+        lineEdit_reportTimeEnd->setObjectName(QStringLiteral("lineEdit_reportTimeEnd"));
+        lineEdit_reportTimeEnd->setGeometry(QRect(260, 6, 113, 21));
         label = new QLabel(frame);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(381, 6, 81, 20));
@@ -75,18 +75,18 @@ public:
         label_4 = new QLabel(frame);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(240, 6, 21, 17));
-        lineEdit_2 = new QLineEdit(frame);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(120, 6, 113, 21));
-        comboBox = new QComboBox(frame);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(460, 4, 85, 21));
+        lineEdit_reportTimeBegin = new QLineEdit(frame);
+        lineEdit_reportTimeBegin->setObjectName(QStringLiteral("lineEdit_reportTimeBegin"));
+        lineEdit_reportTimeBegin->setGeometry(QRect(120, 6, 113, 21));
+        comboBox_netClass = new QComboBox(frame);
+        comboBox_netClass->setObjectName(QStringLiteral("comboBox_netClass"));
+        comboBox_netClass->setGeometry(QRect(460, 4, 85, 21));
         label_5 = new QLabel(frame);
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setGeometry(QRect(380, 44, 41, 17));
-        lineEdit_4 = new QLineEdit(frame);
-        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
-        lineEdit_4->setGeometry(QRect(420, 42, 131, 21));
+        lineEdit_email = new QLineEdit(frame);
+        lineEdit_email->setObjectName(QStringLiteral("lineEdit_email"));
+        lineEdit_email->setGeometry(QRect(420, 42, 131, 21));
 
         retranslateUi(reportEmailRecord);
 
@@ -101,8 +101,8 @@ public:
         label_3->setText(QApplication::translate("reportEmailRecord", "\346\237\245\350\257\242\346\227\245\346\234\237\357\274\232", 0));
         pushButton_search->setText(QApplication::translate("reportEmailRecord", "\346\237\245\350\257\242", 0));
         label_4->setText(QApplication::translate("reportEmailRecord", "\357\275\236", 0));
-        comboBox->clear();
-        comboBox->insertItems(0, QStringList()
+        comboBox_netClass->clear();
+        comboBox_netClass->insertItems(0, QStringList()
          << QApplication::translate("reportEmailRecord", "\345\210\206\347\261\273", 0)
          << QApplication::translate("reportEmailRecord", "\346\211\200\346\234\211\346\225\205\351\232\234", 0)
         );
