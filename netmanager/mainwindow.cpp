@@ -6,11 +6,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->label->setText("网络列表");
+    ui->scrollArea;
+    ui->label->setText("网站列表");
     nManager = new netmanager(ui->scrollArea);
+ //   nManager->setMaximumWidth(ui->scrollArea->width());
+  //  nManager->setMaximumHeight(ui->scrollArea->height());
     nManager->nList->show();
     newWidget = nManager->nList;
-
     sConfig = new setConfig(ui->scrollArea);
     sConfig->hide();
     rpt = new report(ui->scrollArea);
@@ -40,7 +42,7 @@ MainWindow::~MainWindow()
 //添加网络菜单槽函数
 void MainWindow::on_actionAdd_triggered()
 {
-    ui->label->setText("添加网络");
+    ui->label->setText("添加网站");
     newWidget->hide();
     nManager->nAdd->show();
     newWidget = nManager->nAdd;
@@ -49,7 +51,7 @@ void MainWindow::on_actionAdd_triggered()
 //添加网络列表菜单槽函数
 void MainWindow::on_actionList_triggered()
 {
-    ui->label->setText("网络列表");
+    ui->label->setText("网站列表");
     newWidget->hide();
     nManager->nList->show();
     newWidget = nManager->nList;

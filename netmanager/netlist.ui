@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>885</width>
-    <height>700</height>
+    <width>795</width>
+    <height>534</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -30,7 +30,7 @@
     <rect>
      <x>9</x>
      <y>192</y>
-     <width>761</width>
+     <width>771</width>
      <height>261</height>
     </rect>
    </property>
@@ -481,7 +481,7 @@
   <widget class="QPushButton" name="BTN_StopCal">
    <property name="geometry">
     <rect>
-     <x>650</x>
+     <x>690</x>
      <y>470</y>
      <width>85</width>
      <height>30</height>
@@ -507,7 +507,7 @@
   <widget class="QPushButton" name="BTN_StartCal">
    <property name="geometry">
     <rect>
-     <x>559</x>
+     <x>599</x>
      <y>470</y>
      <width>85</width>
      <height>30</height>
@@ -554,6 +554,45 @@
    </property>
    <property name="text">
     <string>删除</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BTN_StartCal_2">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>465</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>添加监控网站</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BTN_StartCal_3">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>490</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>删除监控网站</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BTN_StartCal_5">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>470</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>已监控网站</string>
    </property>
   </widget>
  </widget>

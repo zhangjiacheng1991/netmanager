@@ -35,7 +35,7 @@ public:
         if (netmanager->objectName().isEmpty())
             netmanager->setObjectName(QStringLiteral("netmanager"));
         netmanager->setEnabled(true);
-        netmanager->resize(1133, 665);
+        netmanager->resize(832, 495);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -78,7 +78,7 @@ public:
 
         retranslateUi(netmanager);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(netmanager);

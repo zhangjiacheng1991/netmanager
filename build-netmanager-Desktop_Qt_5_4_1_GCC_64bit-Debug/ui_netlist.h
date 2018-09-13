@@ -65,12 +65,15 @@ public:
     QPushButton *BTN_Edit;
     QPushButton *BTN_Start;
     QPushButton *BTN_Del;
+    QPushButton *BTN_StartCal_2;
+    QPushButton *BTN_StartCal_3;
+    QPushButton *BTN_StartCal_5;
 
     void setupUi(QWidget *netList)
     {
         if (netList->objectName().isEmpty())
             netList->setObjectName(QStringLiteral("netList"));
-        netList->resize(885, 700);
+        netList->resize(795, 534);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -79,7 +82,7 @@ public:
         netList->setSizeIncrement(QSize(0, 0));
         listView = new QListView(netList);
         listView->setObjectName(QStringLiteral("listView"));
-        listView->setGeometry(QRect(9, 192, 761, 261));
+        listView->setGeometry(QRect(9, 192, 771, 261));
         label_11 = new QLabel(netList);
         label_11->setObjectName(QStringLiteral("label_11"));
         label_11->setGeometry(QRect(185, 475, 75, 20));
@@ -196,14 +199,14 @@ public:
         label->setFont(font);
         BTN_StopCal = new QPushButton(netList);
         BTN_StopCal->setObjectName(QStringLiteral("BTN_StopCal"));
-        BTN_StopCal->setGeometry(QRect(650, 470, 85, 30));
+        BTN_StopCal->setGeometry(QRect(690, 470, 85, 30));
         lineEdit_Time = new QLineEdit(netList);
         lineEdit_Time->setObjectName(QStringLiteral("lineEdit_Time"));
         lineEdit_Time->setEnabled(false);
         lineEdit_Time->setGeometry(QRect(77, 474, 91, 21));
         BTN_StartCal = new QPushButton(netList);
         BTN_StartCal->setObjectName(QStringLiteral("BTN_StartCal"));
-        BTN_StartCal->setGeometry(QRect(559, 470, 85, 30));
+        BTN_StartCal->setGeometry(QRect(599, 470, 85, 30));
         BTN_Edit = new QPushButton(netList);
         BTN_Edit->setObjectName(QStringLiteral("BTN_Edit"));
         BTN_Edit->setGeometry(QRect(600, 155, 85, 21));
@@ -213,6 +216,15 @@ public:
         BTN_Del = new QPushButton(netList);
         BTN_Del->setObjectName(QStringLiteral("BTN_Del"));
         BTN_Del->setGeometry(QRect(690, 155, 85, 21));
+        BTN_StartCal_2 = new QPushButton(netList);
+        BTN_StartCal_2->setObjectName(QStringLiteral("BTN_StartCal_2"));
+        BTN_StartCal_2->setGeometry(QRect(380, 465, 101, 21));
+        BTN_StartCal_3 = new QPushButton(netList);
+        BTN_StartCal_3->setObjectName(QStringLiteral("BTN_StartCal_3"));
+        BTN_StartCal_3->setGeometry(QRect(380, 490, 101, 21));
+        BTN_StartCal_5 = new QPushButton(netList);
+        BTN_StartCal_5->setObjectName(QStringLiteral("BTN_StartCal_5"));
+        BTN_StartCal_5->setGeometry(QRect(510, 470, 81, 31));
 
         retranslateUi(netList);
 
@@ -256,6 +268,9 @@ public:
         BTN_Edit->setText(QApplication::translate("netList", "\347\274\226\350\276\221", 0));
         BTN_Start->setText(QApplication::translate("netList", "\345\220\257\347\224\250", 0));
         BTN_Del->setText(QApplication::translate("netList", "\345\210\240\351\231\244", 0));
+        BTN_StartCal_2->setText(QApplication::translate("netList", "\346\267\273\345\212\240\347\233\221\346\216\247\347\275\221\347\253\231", 0));
+        BTN_StartCal_3->setText(QApplication::translate("netList", "\345\210\240\351\231\244\347\233\221\346\216\247\347\275\221\347\253\231", 0));
+        BTN_StartCal_5->setText(QApplication::translate("netList", "\345\267\262\347\233\221\346\216\247\347\275\221\347\253\231", 0));
     } // retranslateUi
 
 };
